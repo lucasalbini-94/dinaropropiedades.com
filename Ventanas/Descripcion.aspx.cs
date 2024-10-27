@@ -46,7 +46,23 @@ namespace Ventanas
 
                     // Obtener la imagen principal
                     Imagenes principal = listaImagenes.Find(x => x.Principal == true);
-                    seleccionada.ImagenPrincipal = principal.Ruta;
+                    if (principal != null)
+                    {
+                        if (principal.Ruta != null && principal.Alt != null)
+                        {
+                            seleccionada.ImagenPrincipal = principal.Ruta;
+                            seleccionada.AltImagen = principal.Alt;
+                        }
+                        else
+                        {
+                            principal = Helper.imagenPlaceholder();
+                        }
+                    }
+                    else
+                    {
+                        principal = Helper.imagenPlaceholder();
+                    }
+                    
 
                     // Cargar Carrousel de imágenes con las imágenes de la propiedad
                     repImagenes.DataSource = listaImagenes.FindAll(x=> x.Principal == false);

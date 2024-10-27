@@ -17,7 +17,8 @@ namespace Ventanas
         private List<Localidades> listaLocalidades;
         private List<Pueblos> listaPueblos;
         public bool cargarNuevo = false;
-        public int contadorCaracteres;
+        public int contadorCharBio;
+        public int contadorCharDesc;
         public Propiedades seleccionada;
         public List<Imagenes> listaImagenes;
 
@@ -111,6 +112,7 @@ namespace Ventanas
                         tbxPrecio.Text = seleccionada.Precio.ToString("0.00");
                         chbxActivo.Checked = seleccionada.Activo;
                         chbxDestacado.Checked = seleccionada.Destacado;
+                        tbxBio.Text = seleccionada.Bio;
                         tbxDescripcion.Text = seleccionada.Descripcion;
                         tbxAmbientes.Text = seleccionada.Ambientes.ToString();
                         tbxDormitorios.Text = seleccionada.Dormitorios.ToString();
@@ -122,6 +124,7 @@ namespace Ventanas
                         ddlDepartamentos.SelectedValue = seleccionada.Departamento.Id.ToString();
                         ddlLocalidades.SelectedValue = seleccionada.Localidad.Id.ToString();
                         ddlPueblos.SelectedValue = seleccionada.Pueblo.Id.ToString();
+                        tbxPalabrasClave.Text = seleccionada.AltImagen;
                         tbxVideo.Text = seleccionada.Video;
                         tbxUbicacion.Text = seleccionada.Ubicacion;
 
@@ -140,12 +143,12 @@ namespace Ventanas
                     //Ajustar contador de caracteres
                     if (string.IsNullOrEmpty(tbxDescripcion.Text))
                     {
-                        contadorCaracteres = 0;
+                        contadorCharDesc = 0;
                     }
                     else
                     {
                         int diferencia = tbxDescripcion.Text.Length;
-                        contadorCaracteres += diferencia;
+                        contadorCharDesc += diferencia;
                     }
                 }
 
@@ -262,7 +265,7 @@ namespace Ventanas
                     }
                 }
 
-                Response.Redirect("DefaultAdmin.aspx");
+                Response.Redirect("DefaultAdmin.aspx", false);
             }
             catch (Exception ex)
             {
@@ -348,12 +351,6 @@ namespace Ventanas
             }
         }
 
-        protected void tbxDescripcion_TextChanged(object sender, EventArgs e)
-        {
-            int diferencia = tbxDescripcion.Text.Length;
-            contadorCaracteres = 0 + diferencia;
-        }
-
         protected void btnCargarImagenesImagenes_Click(object sender, EventArgs e)
         {
             // Crear Lista de imágenes
@@ -394,6 +391,18 @@ namespace Ventanas
                 Response.Redirect("ErrorAdmin.aspx");
             }
 
+        }
+
+        protected void tbxDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            int diferencia = tbxDescripcion.Text.Length;
+            contadorCharDesc = diferencia;
+        }
+
+        protected void tbxBio_TextChanged(object sender, EventArgs e)
+        {
+            int diferencia = tbxBio.Text.Length;
+            contadorCharBio = diferencia;
         }
     }
 }

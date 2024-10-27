@@ -16,12 +16,15 @@ namespace Negocio
             AccesoDB datos = new AccesoDB();
             try
             {
+                // Traer imágenes de una propiedad específica
                 if (id != -1)
-                    datos.setearConsulta("Select Id, Ruta, Principal, IdPropiedad From Imagenes Where IdPropiedad = " + id.ToString());
+                    datos.setearConsulta("Select Id, Ruta, Principal, IdPropiedad, Alt From Imagenes Where IdPropiedad = " + id.ToString());
+                // Traer solo imágenes principales
                 else if (pri)
-                    datos.setearConsulta("Select Id, Ruta, Principal, IdPropiedad From Imagenes Where Principal = 1");
+                    datos.setearConsulta("Select Id, Ruta, Principal, IdPropiedad, Alt From Imagenes Where Principal = 1");
+                // Traer todas las imágenes
                 else
-                    datos.setearConsulta("Select Id, Ruta, Principal, IdPropiedad From Imagenes");
+                    datos.setearConsulta("Select Id, Ruta, Principal, IdPropiedad, Alt From Imagenes");
 
                 datos.ejecutarLectura();
 
@@ -32,6 +35,7 @@ namespace Negocio
                     aux.Ruta = (string)datos.Lector["Ruta"];
                     aux.Principal = (bool)datos.Lector["Principal"];
                     aux.IdPropiedad = (int)datos.Lector["IdPropiedad"];
+                    aux.Alt = (string)datos.Lector["Alt"];
 
                     lista.Add(aux);
                 }
@@ -54,10 +58,11 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Insert Into Imagenes Values (@Ruta, @IdPropiedad, @Principal)");
+                datos.setearConsulta("Insert Into Imagenes Values (@Ruta, @IdPropiedad, @Principal, @Alt)");
                 datos.setearParametro("@Ruta", imagen.Ruta);
                 datos.setearParametro("@IdPropiedad", imagen.IdPropiedad);
                 datos.setearParametro("@Principal", imagen.Principal);
+                datos.setearParametro("@Alt", imagen.Alt);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

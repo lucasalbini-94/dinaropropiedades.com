@@ -12,5 +12,6 @@ namespace Dominio
         public string Ruta { get; set; }
         public int IdPropiedad { get; set; }
         public bool Principal { get; set; }
+        public string Alt { get; set; }
     }
 }

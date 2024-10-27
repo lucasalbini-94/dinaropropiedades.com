@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <%--Filtros--%>
-        <div class="col-lg-3 bg-secondary margin-top mt-3 ps-4 pe-4">
+        <div class="col-lg-3 bg-dark-subtle margin-top mt-3 ps-4 pe-4">
             <section>
                 <div class="margin-top mb-3">
                     <h4>Filtros</h4>
@@ -93,7 +93,7 @@
                         <div class="card mb-3 mt-5">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="<%#Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="Imágen de propiedad">
+                                    <img src="<%#Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="<%#Eval("AltImagen") %>">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">

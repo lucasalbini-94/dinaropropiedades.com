@@ -74,8 +74,8 @@ namespace Ventanas
                 Response.ContentType = "image/png";
                 Response.AppendHeader("Content-Disposition", "attachment; filename=" + nuevoNombre + ".png");
                 Response.WriteFile(absolutePath);
-                Response.Flush(); // Asegúrate de enviar todos los datos al cliente
-                Response.SuppressContent = true; // Evita que se envíe más contenido después del archivo
+                Response.Flush();
+                Response.SuppressContent = true;
             }
             catch (Exception ex)
             {

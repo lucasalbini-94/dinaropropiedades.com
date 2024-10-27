@@ -83,8 +83,16 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="mb-3">
-                    <label for="tbxBio" class="form-label">Bio</label>
-                    <asp:TextBox runat="server" ID="tbxBio" CssClass="bio form-control" TextMode="MultiLine"/>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <label for="tbxBio" class="form-label">Bio</label>
+                            <asp:TextBox runat="server" ID="tbxBio" CssClass="bio form-control" TextMode="MultiLine" 
+                                OnTextChanged="tbxBio_TextChanged" AutoPostBack="true"/>
+                            <asp:RegularExpressionValidator ErrorMessage="Máximo 100 caracteres" ControlToValidate="tbxBio" runat="server" 
+                                ValidationExpression="^.{0,100}" CssClass="text-danger"/>
+                            <label><%: contadorCharBio %>/100 caracteres</label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>
@@ -99,7 +107,7 @@
                             <asp:RegularExpressionValidator ErrorMessage="Máximo 1500 caracteres"
                                 ValidationExpression="^.{0,1500}$"
                                 ControlToValidate="tbxDescripcion" runat="server" CssClass="text-danger" />
-                            <label><%: contadorCaracteres %>/1500 caracteres</label>
+                            <label><%: contadorCharDesc %>/1500 caracteres</label>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
@@ -236,8 +244,8 @@
                                 if (seleccionada.Ubicacion != null)
                                 { %>
                     <iframe src="<%:seleccionada.Ubicacion %>"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    
+                        width="600" height="450" style="border: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                     <%          }
                             }
                         }%>
@@ -257,6 +265,12 @@
                 <div class="mb-3">
                     <label for="inpImagen" class="form-label">Seleccionar imágenes</label>
                     <asp:FileUpload runat="server" ID="fupImagenes" CssClass="form-control" AllowMultiple="true" />
+                </div>
+                <div class="mb-3">
+                    <label for="inpPalabrasClave" class="form-label">Palabras clave</label>
+                    <asp:TextBox runat="server" ID="tbxPalabrasClave" CssClass="form-control"/>
+                    <asp:RequiredFieldValidator ErrorMessage="Este campo no puede estar vacío" CssClass="text-danger" InitialValue=""
+                        ControlToValidate="tbxPalabrasClave" runat="server" />
                 </div>
                 <div class="mb-3">
                     <asp:Button Text="Cargar" ID="btnCargarImagenesImagenes" runat="server" CssClass="btn btn-primary"

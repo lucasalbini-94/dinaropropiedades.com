@@ -17,15 +17,15 @@
         <div class="row">
             <div class="col-lg-6 col-12">
                 <%--Carrousel--%>
-                <div id="carouselExampleFade" class="carousel slide carousel-fade margin-top mb-5">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade margin-top mb-5" data-bs-ride="carousel" data-bs-interval="2000">
                     <div class="carousel-inner">
                         <div class="carousel-item active mt-5">
-                            <img src="<%:seleccionada.ImagenPrincipal %>" class="d-block w-100" alt="...">
+                            <img src="<%:seleccionada.ImagenPrincipal %>" class="d-block w-100" alt="<%#Eval("Alt") %>">
                         </div>
                         <asp:Repeater ID="repImagenes" runat="server">
                             <ItemTemplate>
                                 <div class="carousel-item mt-5">
-                                    <img src="<%#Eval("Ruta") %>" class="d-block w-100" alt="...">
+                                    <img src="<%#Eval("Ruta") %>" class="d-block w-100" alt="<%#Eval("Alt") %>">
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -46,7 +46,7 @@
                     <iframe class="col-12" height="315" src="<%: seleccionada.Video %>"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
                 </div>
                 <% } %>
                 <%-- Contenedor del Mapa--%>

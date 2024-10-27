@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Departamentos.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Imagenes.cs" />
     <Compile Include="Localidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

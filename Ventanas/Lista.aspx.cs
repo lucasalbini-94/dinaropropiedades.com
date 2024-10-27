@@ -25,7 +25,31 @@ namespace Ventanas
                 if (!IsPostBack)
                 {
                     cargarGrilla();
-                    reiniciarDesplegables();
+                    cargarDesplegables();
+
+                    if (Request.QueryString["contrato"] != null && Request.QueryString["propiedad"] != null)
+                    {
+                        string contrato = Request.QueryString["contrato"];
+                        string propiedad = Request.QueryString["propiedad"];
+
+                        ddlTipoContrato.SelectedValue = contrato;
+                        ddlTipoProp.SelectedValue = propiedad;
+
+                        filtrar();
+                        if (listaFiltrada != null)
+                        {
+                            repPropiedades.DataSource = listaFiltrada;
+                            repPropiedades.DataBind();
+                            if (listaFiltrada.Count > 0)
+                                lblError.Text = "";
+                            else
+                                lblError.Text = "No se encontraron resultados. Por favor, cambie los filtros de búsqueda";
+                        }
+                        else
+                            cargarGrilla();
+                    }
+                    else
+                        cargarGrilla();
                 }
                 else
                 {
@@ -45,11 +69,12 @@ namespace Ventanas
                         {
                             repPropiedades.DataSource = listaFiltrada;
                             repPropiedades.DataBind();
-                            lblError.Text = "No se encontraron resultados. Por favor, reinicie los filtros";
+                            lblError.Text = "No se encontraron resultados. Por favor, cambie los filtros de búsqueda";
                             filtroVacio = true;
                         }
                     }
                 }
+
             }
             catch (Exception ex)
             {
@@ -65,14 +90,33 @@ namespace Ventanas
                 PropiedadesNegocio propiedadesNegocio = new PropiedadesNegocio();
                 ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
 
-                listaPropiedades = propiedadesNegocio.listar();
+                listaPropiedades = propiedadesNegocio.listar().FindAll(x => x.Activo == true);
                 listaImagenes = imagenesNegocio.listar(-1, true);
 
 
                 foreach (Propiedades prop in listaPropiedades)
                 {
                     Imagenes img = listaImagenes.Find(x => x.IdPropiedad == prop.Id);
-                    prop.ImagenPrincipal = img.Ruta;
+                    if (img != null)
+                    {
+                        if (!(string.IsNullOrEmpty(img.Ruta) && !string.IsNullOrEmpty(img.Alt)))
+                        {
+                            prop.ImagenPrincipal = img.Ruta;
+                            prop.AltImagen = img.Alt;
+                        }
+                        else
+                        {
+                            img = Helper.imagenPlaceholder();
+                            prop.ImagenPrincipal = img.Ruta;
+                            prop.AltImagen = img.Alt;
+                        }
+                    }
+                    else
+                    {
+                        img = Helper.imagenPlaceholder();
+                        prop.ImagenPrincipal = img.Ruta;
+                        prop.AltImagen = img.Alt;
+                    }
                 }
 
                 repPropiedades.DataSource = listaPropiedades;
@@ -87,7 +131,7 @@ namespace Ventanas
             }
         }
 
-        private void reiniciarDesplegables()
+        private void cargarDesplegables()
         {
             try
             {

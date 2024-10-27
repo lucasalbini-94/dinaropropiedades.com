@@ -6,16 +6,21 @@
     <div class="container margin-top">
         <div class="row mb-5">
             <div class="col-lg-6 col-12 mt-5">
-                <img class="container-fluid" src="https://previews.123rf.com/images/perig76/perig761508/perig76150800039/45293462-vista-de-un-ingeniero-y-un-trabajador-mirando-el-plano-en-el-sitio-de-construcci%C3%B3n.jpg"
+                <img class="container-fluid" src="/Images/ImgApp/editadas 14-8(127).png"
                     alt="Alternate Text" />
             </div>
             <div class="col-lg-6 col-12 mt-5 text-center align-content-center">
                 <h2 class="h1">Construimos tu casa ideal</h2>
                 <p class="ms-5 me-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    ¿No encontraste una casa que cubra tus necesidades y querés hacerla desde cero? ¿O tenés un terreno y necesitás una empresa de confianza para llevar adelante tu proyecto? 
+                </p>
+                <p class="ms-5 me-5">
+                    ¡También te podemos ayudar! <strong>Dinaro Propiedades</strong> está directamente relacionada con <strong>Construcciónes del Sol</strong>, una empresa de construcción con una amplia 
+                trayectoria en el mercado. Nos especializamos en hacer realidad tus sueños, desde el diseño hasta la entrega de la llave, asegurando calidad, 
+                confianza y el más alto estándar de construcción.
+                </p>
+                <p class="ms-5 me-5">
+                    Confía en nosotros para construir la casa de tus sueños.
                 </p>
             </div>
         </div>
@@ -23,30 +28,100 @@
             <div class="col-lg-6 col-12 mt-5 text-center align-content-center">
                 <h2 class="h1">Somos expertos en construcción</h2>
                 <p class="ms-5 me-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Contamos con un equipo de profesionales en la construcción, altamente capacitados y comprometidos con cada proyecto.
+                </p>
+                <p class="ms-5 me-5">
+                    Nos esforzamos por ofrecer:
+                </p>
+                <p class="ms-5 me-5">
+                    <strong>Calidad</strong>
+                </p>
+                <p class="ms-5 me-5">
+                    <strong>Eficiencia</strong>
+                </p>
+                <p class="ms-5 me-5">
+                    <strong>Atención al detalle</strong>
+                </p>
+               <p class="ms-5 me-5">
                 </p>
             </div>
             <div class="col-lg-6 col-12 mt-5">
-                <img class="container-fluid" src="https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Ff5dc02d8-3705-4b1f-bb09-a746798bf67e_1280x720.jpeg"
-                    alt="Alternate Text" />
+                <img class="container-fluid" src="/Images/ImgApp/editadas 14-8(115).png" alt="Alternate Text" />
             </div>
         </div>
         <div class="row mt-5 mb-5">
             <div class="col-lg-6 col-12">
                 <%--Carrousel--%>
-                <div id="carouselExampleFade" class="carousel slide carousel-fade margin-top mb-5">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade margin-top mb-5" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner">
                         <div class="carousel-item active mt-5">
-                            <img src="/Images/imgweb1.jpg" class="d-block w-100" alt="...">
+                            <img src="/Images/ImgApp/cds1.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item mt-5">
-                            <img src="/Images/foto13.jpg" class="d-block w-100" alt="...">
+                            <img src="/Images/ImgApp/cds2.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item mt-5">
-                            <img src="/Images/foto17.jpg" class="d-block w-100" alt="...">
+                            <img src="/Images/ImgApp/cds3.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds4.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds5.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds6.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds7.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds8.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds9.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds10.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds11.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds12.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds13.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds14.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds15.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds16.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds17.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds18.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds19.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds20.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds21.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds22.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item mt-5">
+                            <img src="/Images/ImgApp/cds23.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -60,12 +135,13 @@
                 </div>
             </div>
             <div class="col-lg-6 col-12 mt-5 text-center align-content-center">
-                <h2 class="h1">Conocé nuestras propiedades</h2>
+                <h2 class="h1">Nuestras construcciónes</h2>
                 <p class="ms-5 me-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Con nosotros, cada proyecto se convierte en una experiencia única, donde tus ideas y necesidades son nuestra prioridad. 
+                    Te acompañamos en cada etapa, desde la planificación hasta la entrega, asegurando que cada detalle esté perfectamente alineado con tus expectativas. 
+                </p>
+                <p class="ms-5 me-5">
+                    En <strong>Construcciones del Sol</strong>, construimos más que casas, creamos hogares.
                 </p>
             </div>
         </div>

@@ -19,6 +19,7 @@ namespace Dominio
         public bool Destacado { get; set; }
         public bool Activo { get; set; }
         public string ImagenPrincipal { get; set; }
+        public string AltImagen { get; set; }
         public string Video { get; set; }
         public int MetrosTotales { get; set; }
         public int MetrosCubiertos { get; set; }

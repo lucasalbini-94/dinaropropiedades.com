@@ -20,10 +20,10 @@
     <%--Font Awesome--%>
     <script src="https://kit.fontawesome.com/44819e608f.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-body-secondary">
+<body class="bg-white">
     <header>
         <%--Barra de navegación--%>
-        <nav class="bg-secondary navbar navbar-expand-lg fixed-top shadow">
+        <nav class="bg-dark-subtle navbar navbar-expand-lg fixed-top shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" href="Default.aspx">
                     <img src="/Images/ImgApp/elioprop.svg" alt="Logo" height="35" class="d-inline-block align-text-top">
@@ -49,21 +49,15 @@
                             <a class="nav-link" href="AyudaContacto.aspx">Ayuda y contacto</a>
                         </li>
                     </ul>
-                    <%--<form class="d-flex" role="search" runat="server">
-                        <asp:TextBox CssClass="form-control me-2" ID="tbxBuscar" runat="server" placeholder="Ingrese una palabra"/>
-                        <asp:Button Text="Buscar" ID="btnBuscar" CssClass="btn btn-success" runat="server" OnClick="btnBuscar_Click"/>
-                    </form>--%>
                 </div>
             </div>
         </nav>
     </header>
     <%--Contenedor--%>
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
     <%--Footer--%>
-    <footer class="bg-secondary">
+    <footer class="bg-dark-subtle">
         <hr />
         <div class="container mt-5">
             <div class="row">
@@ -72,19 +66,19 @@
                     <div class="mb-3">
                         <ul>
                             <li>
-                                <a href="Default.aspx" class="link-underline-secondary link-dark">Inicio</a>
+                                <a href="Default.aspx" class="link-underline-opacity-0 link-dark">Inicio</a>
                             </li>
                             <li>
-                                <a href="Lista.aspx" class="link-underline-secondary link-dark">Propiedades</a>
+                                <a href="Lista.aspx" class="link-underline-opacity-0 link-dark">Propiedades</a>
                             </li>
                             <li>
-                                <a href="SobreNosotros.aspx.aspx" class="link-underline-secondary link-dark">Sobre nosotros</a>
+                                <a href="SobreNosotros.aspx.aspx" class="link-underline-opacity-0 link-dark">Sobre nosotros</a>
                             </li>
                             <li>
-                                <a href="NuestrasPropiedades.aspx.aspx" class="link-underline-secondary link-dark">Nuestras propiedades</a>
+                                <a href="NuestrasPropiedades.aspx.aspx" class="link-underline-opacity-0 link-dark">Nuestras propiedades</a>
                             </li>
                             <li>
-                                <a href="AyudaContacto.aspx" class="link-underline-secondary link-dark">Ayuda y contacto</a>
+                                <a href="AyudaContacto.aspx" class="link-underline-opacity-0 link-dark">Ayuda y contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -94,28 +88,28 @@
                     <div class="mb-3">
                         <ul>
                             <li>
-                                <a target="_blank" href="https://wa.me/2616006009" class="link-underline-secondary link-dark">
-                                    <i class="fa-brands fa-whatsapp"></i>WhatsApp
+                                <a target="_blank" href="https://wa.me/2616006009" class="link-underline-opacity-0 link-dark">
+                                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="mailto:dinaropropiedades@gmail.com" class="link-underline-secondary link-dark">
-                                    <i class="fa-regular fa-envelope"></i>Gmail
+                                <a target="_blank" href="mailto:dinaropropiedades@gmail.com" class="link-underline-opacity-0 link-dark">
+                                    <i class="fa-regular fa-envelope"></i> Gmail
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="https://www.instagram.com/dinaropropiedades" class="link-underline-secondary link-dark">
-                                    <i class="fa-brands fa-instagram"></i>Instagram
+                                <a target="_blank" href="https://www.instagram.com/dinaropropiedades" class="link-underline-opacity-0 link-dark">
+                                    <i class="fa-brands fa-instagram"></i> Instagram
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="https://www.facebook.com/share/i9KTSPbey3RTiTWv/?mibextid=qi2Omg" class="link-underline-secondary link-dark">
-                                    <i class="fa-brands fa-facebook"></i>Faceboock
+                                <a target="_blank" href="https://www.facebook.com/share/i9KTSPbey3RTiTWv/?mibextid=qi2Omg" class="link-underline-opacity-0 link-dark">
+                                    <i class="fa-brands fa-facebook"></i> Faceboock
                                 </a>
                             </li>
                             <li>
-                                <a target="_blank" href="www.linkedin.com/in/lucas-albini" class="link-underline-secondary link-dark">
-                                    <i class="fa-brands fa-youtube"></i>You Tube
+                                <a target="_blank" href="www.linkedin.com/in/lucas-albini" class="link-underline-opacity-0 link-dark">
+                                    <i class="fa-brands fa-youtube"></i> You Tube
                                 </a>
                             </li>
                         </ul>
@@ -123,7 +117,7 @@
                 </div>
             </div>
             <div class="row">
-                <p class="text-center">&copy Copiright Dinaro Propiedades 2024. Desarrollado por <a class="link-dark link-underline-secondary" target="_blank" href="https://www.linkedin.com/in/lucas-albini">Lucas Albini</a></p>
+                <p class="text-center">&copy Copiright Dinaro Propiedades 2024. Desarrollado por <a class="link-dark link-underline-opacity-0" target="_blank" href="https://www.linkedin.com/in/lucas-albini">Lucas Albini</a></p>
             </div>
         </div>
     </footer>

@@ -27,18 +27,49 @@ namespace Ventanas
                 if (!IsPostBack)
                 {
                     // Listar propiedades
-                    listaPropiedades = propiedadesNegocio.listar();
+                    listaPropiedades = propiedadesNegocio.listar().FindAll(x => x.Activo == true);
                     // Filtrar destacadas
                     listaDestacadas = listaPropiedades.FindAll(x => x.Destacado == true);
-                    //Listar Imagenes
+                    //Listar Imagenes principales
                     listaImagenes = imagenesNegocio.listar(-1, true);
 
                     foreach (Propiedades propiedad in listaDestacadas)
                     {
                         Imagenes img = new Imagenes();
                         img = listaImagenes.Find(x => x.IdPropiedad == propiedad.Id);
-                        propiedad.ImagenPrincipal = img.Ruta;
+
+                        if (img != null)
+                        {
+                            if (!(string.IsNullOrEmpty(img.Ruta) && !string.IsNullOrEmpty(img.Alt)))
+                            {
+                                propiedad.ImagenPrincipal = img.Ruta;
+                                propiedad.AltImagen = img.Alt;
+                            }
+                            else
+                            {
+                                img = Helper.imagenPlaceholder();
+                                propiedad.AltImagen = img.Alt;
+                                propiedad.ImagenPrincipal = img.Ruta;
+                            }
+                        }
+                        else
+                        {
+                            img = Helper.imagenPlaceholder();
+                            propiedad.AltImagen = img.Alt;
+                            propiedad.ImagenPrincipal = img.Ruta;
+                        }
                     }
+
+                    TipoPropiedadNegocio tipoPropNegocio = new TipoPropiedadNegocio();
+                    ddlTipoPropiedad.DataSource = tipoPropNegocio.listar();
+                    ddlTipoPropiedad.DataTextField = "Descripcion";
+                    ddlTipoPropiedad.DataValueField = "Id";
+                    ddlTipoPropiedad.DataBind();
+                    TipoContratoNegocio tipoContNegocio = new TipoContratoNegocio();
+                    ddlTipoContrato.DataSource = tipoContNegocio.listar();
+                    ddlTipoContrato.DataTextField = "Descripcion";
+                    ddlTipoContrato.DataValueField = "Id";
+                    ddlTipoContrato.DataBind();
 
                     // Cargar lista filtrada en el repeater
                     repDestacados.DataSource = listaDestacadas;
@@ -51,7 +82,23 @@ namespace Ventanas
             catch (Exception ex)
             {
                 string error = ex.ToString();
-                Session.Add("errorUser", error);
+                Session.Add("error", error);
+                Response.Redirect("ErrorUser.aspx");
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string contrato = ddlTipoContrato.SelectedValue;
+                string propiedad = ddlTipoPropiedad.SelectedValue;
+                Response.Redirect($"Lista.aspx?contrato={contrato}&propiedad={propiedad}", false);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.ToString();
+                Session.Add("error", error);
                 Response.Redirect("ErrorUser.aspx");
             }
         }

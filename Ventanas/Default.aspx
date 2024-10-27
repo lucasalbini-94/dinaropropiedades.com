@@ -1,17 +1,74 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Ventanas.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .encabezado {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .img-encabezado {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .h1-encabezado {
+            color: white;
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgb(0 0 0);
+        }
+
+        .radio {
+            border-radius: 25px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--Portada--%>
-    <section class="margin-top card text-bg-dark">
-        <img class="card-img container-fluid p-0" src="/Images/imagenPortada1.jpg" alt="Imágen de portada" />
-        <div class="card-img-overlay row text-center mt-5">
-            <div class="col-4"></div>
-            <h2 class="h1 col-4">Tu lugar en el mundo está acá</h2>
-            <div class="col-4"></div>
+    <header class="encabezado margin-top">
+        <img class="img-encabezado" src="./Images/ImgApp/portada.jpg" alt="Portada" loading="lazy">
+        <div>
+            <h1 class="h1-encabezado">¿Buscás tu lugar en el mundo?</h1>
         </div>
-    </section>
+    </header>
+    <%--Filtro--%>
+    <form runat="server">
+        <div class="container bg-dark-subtle radio mt-3">
+            <div class="row text-center">
+                <h2 class="mt-2">Encontralo acá...</h2>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-lg-3">
+                    <div class="mb-3 mt-3 input-group">
+                        <label for="ddlTipoPropiedad" class="input-group-text">Propiedad</label>
+                        <asp:DropDownList CssClass="form-select" runat="server" ID="ddlTipoPropiedad"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="mt-3 mb-3 input-group">
+                        <label for="ddlTipoContrato" class="input-group-text">Contrato</label>
+                        <asp:DropDownList CssClass="form-select" runat="server" ID="ddlTipoContrato"></asp:DropDownList>
+                    </div>
+                </div>
+                <div class="col-lg-2 mt-3 mb-3 text-center">
+                    <asp:Button Text="Buscar" CssClass="btn btn-success" ID="btnBuscar" OnClick="btnBuscar_Click" runat="server" />
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </form>
     <%--Propiedades destacadas--%>
     <section class="container mt-5">
         <div class="text-center">
@@ -24,7 +81,7 @@
                     <div class="card mb-3 mt-5">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="<%#Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="Imágen de propiedad">
+                                <img src="<%#Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="<%#Eval("AltImagen") %>">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

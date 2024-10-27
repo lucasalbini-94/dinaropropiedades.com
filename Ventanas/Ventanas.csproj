@@ -87,17 +87,6 @@
     <Content Include="ErrorAdmin.aspx" />
     <Content Include="ErrorUser.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Images\foto1.jpeg" />
-    <Content Include="Images\foto13.jpg" />
-    <Content Include="Images\foto17.jpg" />
-    <Content Include="Images\foto19.jpg" />
-    <Content Include="Images\foto2.jpeg" />
-    <Content Include="Images\foto3.jpg" />
-    <Content Include="Images\foto6.jpg" />
-    <Content Include="Images\foto8.jpg" />
-    <Content Include="Images\foto9.jpg" />
-    <Content Include="Images\imagenPortada1.jpg" />
-    <Content Include="Images\imgweb1.jpg" />
     <Content Include="Lista.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="NuestrasPropiedades.aspx" />
