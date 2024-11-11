@@ -13,9 +13,15 @@ namespace Ventanas
     public partial class Lista : System.Web.UI.Page
     {
         private List<Propiedades> listaPropiedades;
-        private List<Propiedades> listaFiltrada;
+        public List<Propiedades> listaFiltrada;
         private List<Imagenes> listaImagenes;
         private bool filtroVacio = false;
+
+        public bool MostrarSiNoEsTerreno(bool esTerreno)
+        {
+            return !esTerreno;
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,10 +46,6 @@ namespace Ventanas
                         {
                             repPropiedades.DataSource = listaFiltrada;
                             repPropiedades.DataBind();
-                            if (listaFiltrada.Count > 0)
-                                lblError.Text = "";
-                            else
-                                lblError.Text = "No se encontraron resultados. Por favor, cambie los filtros de búsqueda";
                         }
                         else
                             cargarGrilla();
@@ -63,13 +65,11 @@ namespace Ventanas
                         {
                             repPropiedades.DataSource = listaFiltrada;
                             repPropiedades.DataBind();
-                            lblError.Text = "";
                         }
                         else
                         {
                             repPropiedades.DataSource = listaFiltrada;
                             repPropiedades.DataBind();
-                            lblError.Text = "No se encontraron resultados. Por favor, cambie los filtros de búsqueda";
                             filtroVacio = true;
                         }
                     }
@@ -90,7 +90,10 @@ namespace Ventanas
                 PropiedadesNegocio propiedadesNegocio = new PropiedadesNegocio();
                 ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
 
+                // Listar propiedades activas
                 listaPropiedades = propiedadesNegocio.listar().FindAll(x => x.Activo == true);
+                // Separar terrenos y propiedades
+                Helper.separarPropiedadesYTerrenos(ref listaPropiedades);
                 listaImagenes = imagenesNegocio.listar(-1, true);
 
 
@@ -121,7 +124,6 @@ namespace Ventanas
 
                 repPropiedades.DataSource = listaPropiedades;
                 repPropiedades.DataBind();
-                lblError.Text = "";
 
             }
             catch (Exception ex)

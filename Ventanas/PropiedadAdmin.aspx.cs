@@ -94,6 +94,8 @@ namespace Ventanas
 
                     if (Request.QueryString["id"] != null)
                     {
+                        encabezado.InnerText = "Modificar propiedad";
+
                         // Definir cargarNuevo como false
                         cargarNuevo = false;
 
@@ -124,20 +126,26 @@ namespace Ventanas
                         ddlDepartamentos.SelectedValue = seleccionada.Departamento.Id.ToString();
                         ddlLocalidades.SelectedValue = seleccionada.Localidad.Id.ToString();
                         ddlPueblos.SelectedValue = seleccionada.Pueblo.Id.ToString();
-                        tbxPalabrasClave.Text = seleccionada.AltImagen;
                         tbxVideo.Text = seleccionada.Video;
                         tbxUbicacion.Text = seleccionada.Ubicacion;
 
                         if (listaImagenes != null)
                         {
-                            repImagenes.DataSource = listaImagenes;
-                            repImagenes.DataBind();
+                            if (listaImagenes.Count > 0)
+                            {
+                                repImagenes.DataSource = listaImagenes;
+                                repImagenes.DataBind();
+                                seleccionada.AltImagen = listaImagenes[0].Alt;
+                                tbxPalabrasClave.Text = seleccionada.AltImagen;
+                            }
                         }
                     }
                     else
                     {
                         // Si no es modificación, definir cargarNuevo como true
                         cargarNuevo = true;
+
+                        encabezado.InnerText = "Nueva propiedad";
                     }
 
                     //Ajustar contador de caracteres
@@ -342,6 +350,24 @@ namespace Ventanas
 
                 Response.Redirect("DefaultAdmin.aspx", false);
 
+            }
+            catch (Exception ex)
+            {
+                string error = ex.ToString();
+                Session.Add("error", error);
+                Response.Redirect("ErrorAdmin.aspx");
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            PropiedadesNegocio negocio = new PropiedadesNegocio();
+
+            try
+            {
+                int id = int.Parse(Request.QueryString["id"]);
+                negocio.eliminar(id);
+                Response.Redirect("DefaultAdmin.aspx", false);
             }
             catch (Exception ex)
             {

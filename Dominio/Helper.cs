@@ -16,5 +16,32 @@ namespace Ventanas
             img.Alt = "Imagen de placeholder";
             return img;
         }
+
+        public static void separarPropiedadesYTerrenos(ref List<Propiedades> lista)
+        {
+            foreach (Propiedades prop in lista)
+            {
+                if (prop.TipoPropiedad.Descripcion == "Terreno")
+                {
+                    prop.Terreno = true;
+                }
+                else
+                {
+                    prop.Terreno = false;
+                }
+            }
+        }
+
+        public static void separarPropiedadesYTerrenos(ref Propiedades prop)
+        {
+            if (prop.TipoPropiedad.Descripcion == "Terreno")
+            {
+                prop.Terreno = true;
+            }
+            else
+            {
+                prop.Terreno = false;
+            }
+        }
     }
 }

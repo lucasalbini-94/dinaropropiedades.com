@@ -15,6 +15,11 @@ namespace Ventanas
         private List<Propiedades> listaDestacadas;
         private List<Imagenes> listaImagenes;
 
+        public bool MostrarSiNoEsTerreno(bool esTerreno)
+        {
+            return !esTerreno;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // Crear instancias a objetos necesarias
@@ -30,6 +35,8 @@ namespace Ventanas
                     listaPropiedades = propiedadesNegocio.listar().FindAll(x => x.Activo == true);
                     // Filtrar destacadas
                     listaDestacadas = listaPropiedades.FindAll(x => x.Destacado == true);
+                    // Separar entre terrens y propiedades
+                    Helper.separarPropiedadesYTerrenos(ref listaDestacadas);
                     //Listar Imagenes principales
                     listaImagenes = imagenesNegocio.listar(-1, true);
 

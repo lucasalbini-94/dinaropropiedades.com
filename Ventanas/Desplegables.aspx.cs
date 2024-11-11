@@ -26,53 +26,9 @@ namespace Ventanas
 
                 campo = Request.QueryString["campo"];
 
-
-                if (campo == "Dpto")
+                if (!IsPostBack)
                 {
-                    List<Departamentos> lista = dptoNegocio.listar();
-                    dgvDesplegable.DataSource = lista;
-                }
-                else if (campo == "Loc")
-                {
-                    List<Localidades> lista = locNegocio.listar();
-                    dgvDesplegable.DataSource = lista;
-                }
-                else if (campo == "Pue")
-                {
-                    List<Pueblos> lista = pueNegocio.listar();
-                    dgvDesplegable.DataSource = lista;
-                }
-                else if (campo == "TP")
-                {
-                    List<TipoPropiedad> lista = TPNegocio.listar();
-                    dgvDesplegable.DataSource = lista;
-                }
-                else if (campo == "TC")
-                {
-                    List<TipoContrato> lista = TCNegocio.listar();
-                    dgvDesplegable.DataSource = lista;
-                }
-                else
-                    return;
-
-                dgvDesplegable.AutoGenerateSelectButton = true;
-                dgvDesplegable.DataBind();
-
-                if (campo == "Loc")
-                {
-                    List<Departamentos> lista = dptoNegocio.listar();
-                    ddlDesplegable.DataSource = lista;
-                    ddlDesplegable.DataTextField = "Descripcion";
-                    ddlDesplegable.DataValueField = "Id";
-                    ddlDesplegable.DataBind();
-                }
-                else if (campo == "Pue")
-                {
-                    List<Localidades> lista = locNegocio.listar();
-                    ddlDesplegable.DataSource = lista;
-                    ddlDesplegable.DataTextField = "Descripcion";
-                    ddlDesplegable.DataValueField = "Id";
-                    ddlDesplegable.DataBind();
+                    cargarGrilla();
                 }
 
                 if (modificar)
@@ -138,6 +94,7 @@ namespace Ventanas
         {
             modificar = true;
             string id = dgvDesplegable.SelectedDataKey.Value.ToString();
+            Session.Add("modificar", true);
             Session.Add("idSeleccionado", id);
             Page_Load(sender, e);
         }
@@ -160,14 +117,18 @@ namespace Ventanas
                     {
                         Departamentos aux = new Departamentos();
                         aux.Descripcion = tbxCampo.Text;
-                        if (modificar)
+
+                        if (Session["modificar"] != null)
+                        {
+                            aux.Id = int.Parse(Session["idSeleccionado"].ToString());
                             dptoNegocio.modificar(aux);
+                        }
                         else
                             dptoNegocio.insertar(aux);
                     }
                     else
                     {
-                        id = int.Parse(ddlDesplegable.SelectedValue);
+                        id = int.Parse(Session["idSeleccionado"].ToString());
                         dptoNegocio.eliminar(id);
                     }
                 }
@@ -179,16 +140,21 @@ namespace Ventanas
                         aux.Descripcion = tbxCampo.Text;
                         aux.Departamento = new Departamentos();
                         aux.Departamento.Id = int.Parse(ddlDesplegable.SelectedValue);
-                        if (modificar)
+                        if (Session["modificar"] != null)
+                        {
+                            aux.Id = int.Parse(Session["idSeleccionado"].ToString());
                             locNegocio.modificar(aux);
+                        }
                         else
                             locNegocio.insertar(aux);
                     }
                     else
                     {
-                        id = int.Parse(ddlDesplegable.SelectedValue);
-                        locNegocio.eliminar(id);
+                        string mensaje;
+                        id = int.Parse(Session["idSeleccionado"].ToString());
+                        locNegocio.eliminar(id, out mensaje);
                     }
+                    ddlDesplegable.SelectedIndex = 0;
                 }
                 else if (campo == "Pue")
                 {
@@ -198,16 +164,20 @@ namespace Ventanas
                         aux.Descripcion = tbxCampo.Text;
                         aux.Localidad = new Localidades();
                         aux.Localidad.Id = int.Parse(ddlDesplegable.SelectedValue);
-                        if (modificar)
+                        if (Session["modificar"] != null)
+                        {
+                            aux.Id = int.Parse(Session["idSeleccionado"].ToString());
                             pueNegocio.modificar(aux);
+                        }
                         else
                             pueNegocio.insertar(aux);
                     }
                     else
                     {
-                        id = int.Parse(ddlDesplegable.SelectedValue);
+                        id = int.Parse(Session["idSeleccionado"].ToString());
                         pueNegocio.eliminar(id);
                     }
+                    ddlDesplegable.SelectedIndex = 0;
                 }
                 else if (campo == "TC")
                 {
@@ -215,14 +185,17 @@ namespace Ventanas
                     {
                         TipoContrato aux = new TipoContrato();
                         aux.Descripcion = tbxCampo.Text;
-                        if (modificar)
+                        if (Session["modificar"] != null)
+                        {
+                            aux.Id = int.Parse(Session["idSeleccionado"].ToString());
                             TCNegocio.modificar(aux);
+                        }
                         else
                             TCNegocio.insertar(aux);
                     }
                     else
                     {
-                        id = int.Parse(ddlDesplegable.SelectedValue);
+                        id = int.Parse(Session["idSeleccionado"].ToString());
                         TCNegocio.eliminar(id);
                     }
                 }
@@ -232,18 +205,24 @@ namespace Ventanas
                     {
                         TipoPropiedad aux = new TipoPropiedad();
                         aux.Descripcion = tbxCampo.Text;
-                        if (modificar)
+                        if (Session["modificar"] != null)
+                        {
+                            aux.Id = int.Parse(Session["idSeleccionado"].ToString());
                             TPNegocio.modificar(aux);
+                        }
                         else
                             TPNegocio.insertar(aux);
                     }
                     else
                     {
-                        id = int.Parse(ddlDesplegable.SelectedValue);
+                        id = int.Parse(Session["idSeleccionado"].ToString());
                         TPNegocio.eliminar(id);
                     }
                 }
-
+                Session.Remove("idSeleccionado");
+                Session.Remove("modificar");
+                tbxCampo.Text = "";
+                cargarGrilla();
                 Page_Load(sender, e);
             }
             catch (Exception ex)
@@ -251,6 +230,71 @@ namespace Ventanas
                 Session.Add("error", ex.ToString());
                 Response.Redirect("ErrorAdmin.aspx");
             }
+        }
+
+        private void cargarGrilla()
+        {
+            DptoNegocio dptoNegocio = new DptoNegocio();
+            LocalidadesNegocio locNegocio = new LocalidadesNegocio();
+            PueblosNegocio pueNegocio = new PueblosNegocio();
+            TipoPropiedadNegocio TPNegocio = new TipoPropiedadNegocio();
+            TipoContratoNegocio TCNegocio = new TipoContratoNegocio();
+
+            campo = Request.QueryString["campo"];
+
+            if (campo == "Dpto")
+            {
+                encabezado.InnerText = "Departamentos";
+                etiqueta1.InnerText = "Ubicación";
+                etiqueta2.InnerText = "Departamentos";
+                List<Departamentos> lista = dptoNegocio.listar();
+                dgvDesplegable.DataSource = lista;
+            }
+            else if (campo == "Loc")
+            {
+                encabezado.InnerText = "Localidades";
+                etiqueta1.InnerText = "Ubicación";
+                etiqueta2.InnerText = "Localidades";
+                List<Localidades> lista = locNegocio.listar();
+                dgvDesplegable.DataSource = lista;
+                List<Departamentos> listaDptos = dptoNegocio.listar();
+                ddlDesplegable.DataSource = listaDptos;
+                ddlDesplegable.DataTextField = "Descripcion";
+                ddlDesplegable.DataValueField = "Id";
+                ddlDesplegable.DataBind();
+            }
+            else if (campo == "Pue")
+            {
+                encabezado.InnerText = "Barrios";
+                etiqueta1.InnerText = "Ubicación";
+                etiqueta2.InnerText = "Barrios";
+                List<Pueblos> lista = pueNegocio.listar();
+                dgvDesplegable.DataSource = lista;
+                List<Localidades> listaLoc = locNegocio.listar();
+                ddlDesplegable.DataSource = listaLoc;
+                ddlDesplegable.DataTextField = "Descripcion";
+                ddlDesplegable.DataValueField = "Id";
+                ddlDesplegable.DataBind();
+            }
+            else if (campo == "TP")
+            {
+                encabezado.InnerText = "Tipos de propiedad";
+                etiqueta1.InnerText = "Propiedades y contratos";
+                etiqueta2.InnerText = "Tipos de propiedad";
+                List<TipoPropiedad> lista = TPNegocio.listar();
+                dgvDesplegable.DataSource = lista;
+            }
+            else if (campo == "TC")
+            {
+                encabezado.InnerText = "Tipos de contrato";
+                etiqueta1.InnerText = "Propiedades y contratos";
+                etiqueta2.InnerText = "Tipos de contrato";
+                List<TipoContrato> lista = TCNegocio.listar();
+                dgvDesplegable.DataSource = lista;
+            }
+
+            dgvDesplegable.AutoGenerateSelectButton = true;
+            dgvDesplegable.DataBind();
         }
     }
 }

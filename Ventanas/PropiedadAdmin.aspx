@@ -13,15 +13,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" />
-    <div class="margin-top container">
+    <div class="margin-top container" id="datosPrincipales">
 
         <%--Sección principal--%>
 
-        <div class="row">
-            <div class="pt-3 mb-5">
-                <h1>Datos principales</h1>
-            </div>
-        </div>
+        <h1 id="encabezado" class="mt-4" runat="server"></h1>
+        <ol class="breadcrumb mb-4" id="datosprincipales">
+            <li class="breadcrumb-item">Panel</li>
+            <li class="breadcrumb-item active">Nueva propiedad</li>
+            <li class="breadcrumb-item active"><a href="#datosprincipales">Datos principales</a></li>
+            <li class="breadcrumb-item active"><a href="#caracteristicas">Características</a></li>
+            <li class="breadcrumb-item active"><a href="#ubicacion">Ubicación</a></li>
+            <li class="breadcrumb-item active"><a href="#imagenesVideo">Imágenes y video</a></li>
+            <li class="breadcrumb-item active"><a href="#btnAccion">Botones de acción</a></li>
+
+        </ol>
         <div class="row">
             <div class="col-lg-4">
                 <div class="mb-3">
@@ -86,10 +92,10 @@
                     <asp:UpdatePanel runat="server">
                         <ContentTemplate>
                             <label for="tbxBio" class="form-label">Bio</label>
-                            <asp:TextBox runat="server" ID="tbxBio" CssClass="bio form-control" TextMode="MultiLine" 
-                                OnTextChanged="tbxBio_TextChanged" AutoPostBack="true"/>
-                            <asp:RegularExpressionValidator ErrorMessage="Máximo 100 caracteres" ControlToValidate="tbxBio" runat="server" 
-                                ValidationExpression="^.{0,100}" CssClass="text-danger"/>
+                            <asp:TextBox runat="server" ID="tbxBio" CssClass="bio form-control" TextMode="MultiLine"
+                                OnTextChanged="tbxBio_TextChanged" AutoPostBack="true" />
+                            <asp:RegularExpressionValidator ErrorMessage="Máximo 100 caracteres" ControlToValidate="tbxBio" runat="server"
+                                ValidationExpression="^.{0,100}" CssClass="text-danger" />
                             <label><%: contadorCharBio %>/100 caracteres</label>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -113,10 +119,20 @@
                 </div>
             </div>
         </div>
-        <hr />
         <%--Sección características--%>
+        <hr id="caracteristicas"/>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">Panel</li>
+            <li class="breadcrumb-item active">Nueva propiedad</li>
+            <li class="breadcrumb-item active"><a href="#datosprincipales">Datos principales</a></li>
+            <li class="breadcrumb-item active"><a href="#caracteristicas">Características</a></li>
+            <li class="breadcrumb-item active"><a href="#ubicacion">Ubicación</a></li>
+            <li class="breadcrumb-item active"><a href="#imagenesVideo">Imágenes y video</a></li>
+            <li class="breadcrumb-item active"><a href="#btnAccion">Botones de acción</a></li>
 
-        <div class="row">
+        </ol>
+
+        <div class="row" >
             <div class="mb-5 mt-5">
                 <h2 class="h1">Características</h2>
             </div>
@@ -179,10 +195,19 @@
                 </div>
             </div>
         </div>
-        <hr />
+        <hr id="ubicacion"/>
         <%--Sección ubicación--%>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">Panel</li>
+            <li class="breadcrumb-item active">Nueva propiedad</li>
+            <li class="breadcrumb-item active"><a href="#datosprincipales">Datos principales</a></li>
+            <li class="breadcrumb-item active"><a href="#caracteristicas">Características</a></li>
+            <li class="breadcrumb-item active"><a href="#ubicacion">Ubicación</a></li>
+            <li class="breadcrumb-item active"><a href="#imagenesVideo">Imágenes y video</a></li>
+            <li class="breadcrumb-item active"><a href="#btnAccion">Botones de acción</a></li>
 
-        <div class="row">
+        </ol>
+        <div class="row" >
             <div class="mb-5 mt-5">
                 <h2 class="h1">Ubicación</h2>
             </div>
@@ -252,10 +277,20 @@
                 </div>
             </div>
         </div>
-        <hr />
+        <hr id="imagenesVideo"/>
 
         <%--Sección imágenes y video--%>
-        <div class="row">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">Panel</li>
+            <li class="breadcrumb-item active">Nueva propiedad</li>
+            <li class="breadcrumb-item active"><a href="#datosprincipales">Datos principales</a></li>
+            <li class="breadcrumb-item active"><a href="#caracteristicas">Características</a></li>
+            <li class="breadcrumb-item active"><a href="#ubicacion">Ubicación</a></li>
+            <li class="breadcrumb-item active"><a href="#imagenesVideo">Imágenes y video</a></li>
+            <li class="breadcrumb-item active"><a href="#btnAccion">Botones de acción</a></li>
+
+        </ol>
+        <div class="row" >
             <div class="mb-5 mt-5">
                 <h2 class="h1">Imágenes y video</h2>
             </div>
@@ -268,7 +303,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="inpPalabrasClave" class="form-label">Palabras clave</label>
-                    <asp:TextBox runat="server" ID="tbxPalabrasClave" CssClass="form-control"/>
+                    <asp:TextBox runat="server" ID="tbxPalabrasClave" CssClass="form-control" />
                     <asp:RequiredFieldValidator ErrorMessage="Este campo no puede estar vacío" CssClass="text-danger" InitialValue=""
                         ControlToValidate="tbxPalabrasClave" runat="server" />
                 </div>
@@ -326,9 +361,19 @@
             </div>
         </div>
 
-        <hr />
+        <hr id="btnAccion"/>
         <%--Botones de acción--%>
-        <div class="row">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item">Panel</li>
+            <li class="breadcrumb-item active">Nueva propiedad</li>
+            <li class="breadcrumb-item active"><a href="#datosprincipales">Datos principales</a></li>
+            <li class="breadcrumb-item active"><a href="#caracteristicas">Características</a></li>
+            <li class="breadcrumb-item active"><a href="#ubicacion">Ubicación</a></li>
+            <li class="breadcrumb-item active"><a href="#imagenesVideo">Imágenes y video</a></li>
+            <li class="breadcrumb-item active"><a href="#btnAccion">Botones de acción</a></li>
+
+        </ol>
+        <div class="row" >
             <div class="col-lg-4">
                 <div class="mb-3">
                     <% if (cargarNuevo)
@@ -340,10 +385,13 @@
                         { %>
                     <asp:Button ID="btnModificar" Text="Modificar" CssClass="btn btn-primary form-control mb-3" runat="server"
                         OnClick="btnModificar_Click" />
+                    <asp:Button ID="btnEliminar" Text="Eliminar" CssClass="btn btn-danger form-control mb-3" runat="server"
+                        OnClick="btnEliminar_Click" />
                     <% } %>
-                    <a href="DefaultAdmin.aspx" class="btn btn-primary form-control mb-3">Cancelar</a>
+                    <a href="DefaultAdmin.aspx" class="btn btn-primary form-control mb-5">Cancelar</a>
                 </div>
             </div>
         </div>
+        <hr />
     </div>
 </asp:Content>

@@ -24,7 +24,7 @@
 
         .h1-encabezado {
             color: white;
-            font-size: 3rem;
+            font-size: 2rem;
             margin: 0;
             text-shadow: 2px 2px 5px rgb(0 0 0);
         }
@@ -36,17 +36,62 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--Portada--%>
-    <header class="encabezado margin-top">
+    <header class="encabezado">
         <img class="img-encabezado" src="./Images/ImgApp/portada.jpg" alt="Portada" loading="lazy">
         <div>
-            <h1 class="h1-encabezado">¿Buscás tu lugar en el mundo?</h1>
+            <p class="h1-encabezado">¿Buscás tu lugar en el mundo?</p>
+            <p class="h1-encabezado">Encontralo acá...</p>
         </div>
     </header>
+    
+    <%--Propiedades destacadas--%>
+    <section class="container mt-3">
+        <%--<div class="text-center">
+            <h2 class="h1">Propiedades destacadas</h2>
+        </div>--%>
+        <%--Repetidor de propiedades--%>
+        <asp:Repeater runat="server" ID="repDestacados">
+            <ItemTemplate>
+                <a class="link-light" href="Descripcion.aspx?id=<%#Eval("Id") %>">
+                    <div class="card mb-3 mt-5">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="<%#Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="<%#Eval("AltImagen") %>">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3"><%#Eval("Titulo") %></h5>
+                                    <p class="card-text"><%#Eval("Bio") %></p>
+                                    <h4 class="card-subtitle text-danger mb-3"><strong><%#Eval("Moneda") %></strong> <%#string.Format("{0:F2}", Eval("Precio")) %></h4>
+                                </div>
+                                <div class="card-footer">
+                                        <!-- Mostrar solo si no es un terreno -->
+                                        <div class="row mb-3" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                            <span class="col-4"><i class="fa-solid fa-door-closed pe-1"></i>Ambientes: <%# Eval("Ambientes") %></span>
+                                            <span class="col-4"><i class="fa-solid fa-bed pe-1"></i>Dormitorios: <%# Eval("Dormitorios") %></span>
+                                            <span class="col-4"><i class="fa-solid fa-bath pe-1"></i>Baños: <%# Eval("Baños") %></span>
+                                        </div>
+                                        <div class="row">
+                                            <span class="col-4"><i class="fa-solid fa-house pe-1"></i>M² terreno: <%# Eval("MetrosTotales") %></span>
+                                            <!-- Mostrar solo si no es un terreno -->
+                                            <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                                <i class="fa-solid fa-ruler-combined pe-1"></i>M² cubiertos: <%# Eval("MetrosCubiertos") %></span>
+                                            <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                                <i class="fa-solid fa-car pe-1"></i>Cocheras: <%# Eval("Cocheras") %></span>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </ItemTemplate>
+        </asp:Repeater>
+    </section>
     <%--Filtro--%>
     <form runat="server">
         <div class="container bg-dark-subtle radio mt-3">
             <div class="row text-center">
-                <h2 class="mt-2">Encontralo acá...</h2>
+                <h2 class="mt-2">Encontrá lo que buscás</h2>
             </div>
             <div class="row">
                 <div class="col-2"></div>
@@ -69,51 +114,11 @@
             </div>
         </div>
     </form>
-    <%--Propiedades destacadas--%>
-    <section class="container mt-5">
-        <div class="text-center">
-            <h2 class="h1">Propiedades destacadas</h2>
-        </div>
-        <%--Repetidor de propiedades--%>
-        <asp:Repeater runat="server" ID="repDestacados">
-            <ItemTemplate>
-                <a class="link-light" href="Descripcion.aspx?id=<%#Eval("Id") %>">
-                    <div class="card mb-3 mt-5">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="<%#Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="<%#Eval("AltImagen") %>">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-3"><%#Eval("Titulo") %></h5>
-                                    <p class="card-text"><%#Eval("Bio") %></p>
-                                    <h4 class="card-subtitle text-danger mb-3"><strong><%#Eval("Moneda") %></strong><%#string.Format("{0:F2}", Eval("Precio")) %></h4>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row mb-3">
-                                        <span class="col-4"><i class="fa-solid fa-door-closed pe-1"></i>Ambientes: <%#Eval("Ambientes") %></span>
-                                        <span class="col-4"><i class="fa-solid fa-bed pe-1"></i><%#Eval("Dormitorios") %> dormitorios</span>
-                                        <span class="col-4"><i class="fa-solid fa-bath pe-1"></i><%#Eval("Baños") %> baños</span>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <span class="col-4"><i class="fa-solid fa-house pe-1"></i>M² terreno: <%#Eval("MetrosTotales") %></span>
-                                        <span class="col-4"><i class="fa-solid fa-ruler-combined pe-1"></i>M² cubiertos: <%#Eval("MetrosCubiertos") %></span>
-                                        <span class="col-4"><i class="fa-solid fa-car pe-1"></i>Cocheras: <%#Eval("Cocheras") %></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </ItemTemplate>
-        </asp:Repeater>
-    </section>
-
     <%--Formulario de contacto--%>
     <section class="container mt-5">
         <div class="row mt-5">
             <div class=" mb-5 text-center align-items-center">
-                <h2 class="h1 mb-5">Comunicate con nosotros</h2>
+                <h2 class="h1 mb-2">Comunicate y publicá con nosotros</h2>
                 <a target="_blank" href="https://wa.me/2616006009">
                     <img src="/Images/ImgApp/whatsapp_logo.png" alt="WhatsApp Logo" />
                 </a>

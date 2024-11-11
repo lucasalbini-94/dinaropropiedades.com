@@ -86,24 +86,37 @@ namespace Negocio
             }
         }
 
-        public void eliminar(int id)
+        public void eliminar(int id, out string mensaje)
         {
             AccesoDB datos = new AccesoDB();
+            PueblosNegocio puebloNegocio = new PueblosNegocio();
+            List<Pueblos> listaPueblos = puebloNegocio.listar().FindAll(x => x.Localidad.Id == id);
+            mensaje = "";
 
-            try
+            if(listaPueblos != null)
             {
-                datos.setearConsulta("Delete Localidades Where Id = @Id");
-                datos.setearParametro("@Id", id);
-                datos.ejecutarAccion();
+                if (listaPueblos.Count == 0)
+                {
+                    try
+                    {
+                        datos.setearConsulta("Delete Localidades Where Id = @Id");
+                        datos.setearParametro("@Id", id);
+                        datos.ejecutarAccion();
+                    }
+                    catch
+                    {
+                        mensaje = "No se pudo eliminar la localidad";
+                    }
+                    finally
+                    {
+                        datos.cerrarConexion();
+                    }
+                }
+                else
+                    mensaje = "Hay pueblos asociados a esta Localidad";
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+            else
+                mensaje = "Hay pueblos asociados a esta Localidad";
         }
     }
 }

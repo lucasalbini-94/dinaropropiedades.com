@@ -68,22 +68,31 @@
                 </div>
                 <div>
                     <div id="precio" class="text-danger mb-5" style="display: flex; align-items: center">
-                        <h3><%:seleccionada.Moneda %><%: string.Format("{0:F2}", seleccionada.Precio) %></h3>
+                        <h3><strong><%:seleccionada.Moneda %></strong> <%: string.Format("{0:F2}", seleccionada.Precio) %></h3>
                         <a target="_blank" href="https://wa.me/2616006009" class="ms-3 btn btn-success">Contactanos</a>
                     </div>
+                    <% if (!seleccionada.Terreno)
+                        { %>
                     <div class="row mb-3">
                         <span class="col-4"><i class="fa-solid fa-bed pe-1"></i><%:seleccionada.Dormitorios %> dormitorios</span>
                         <span class="col-4"><i class="fa-solid fa-bath pe-1"></i><%:seleccionada.Baños %> baños</span>
                         <span class="col-4"><i class="fa-solid fa-door-closed"></i><%:seleccionada.Ambientes %> ambientes</span>
                     </div>
+                    <% } %>
                     <div class="row mb-3">
                         <span class="col-4"><i class="fa-solid fa-ruler-combined pe-1"></i><%:seleccionada.MetrosTotales %> m² de terreno</span>
+                        <% if (!seleccionada.Terreno)
+                            { %>
                         <span class="col-4"><i class="fa-solid fa-house"></i><%:seleccionada.MetrosCubiertos %> m² cubiertos</span>
                         <span class="col-4"><i class="fa-solid fa-car"></i><%:seleccionada.Cocheras %> cochera</span>
+                        <% } %>
                     </div>
+                    <% if (!seleccionada.Terreno)
+                        { %>
                     <div>
                         <span class="col-4"><i class="fa-solid fa-stairs"></i><%:seleccionada.Plantas %> plantas</span>
                     </div>
+                    <% } %>
                     <div class="row">
                         <h3>Descripción</h3>
                         <p class="mt-3"><%:seleccionada.Descripcion %></p>

@@ -89,28 +89,32 @@
         <div class="col-9 mt-5 container">
             <asp:Repeater runat="server" ID="repPropiedades">
                 <ItemTemplate>
-                    <a class="link-light" href="Descripcion.aspx?id=<%#Eval("Id") %>">
+                    <a class="link-light" href="Descripcion.aspx?id=<%# Eval("Id") %>">
                         <div class="card mb-3 mt-5">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="<%#Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="<%#Eval("AltImagen") %>">
+                                    <img src="<%# Eval("ImagenPrincipal") %>" class="img-fluid rounded-start" alt="<%# Eval("AltImagen") %>">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title mb-3"><%#Eval("Titulo") %></h5>
-                                        <p class="card-text"><%#Eval("Bio") %></p>
-                                        <h4 class="card-subtitle text-danger mb-3"><strong><%#Eval("Moneda") %></strong><%#string.Format("{0:F2}", Eval("Precio")) %></h4>
+                                        <h5 class="card-title mb-3"><%# Eval("Titulo") %></h5>
+                                        <p class="card-text"><%# Eval("Bio") %></p>
+                                        <h4 class="card-subtitle text-danger mb-3"><strong><%# Eval("Moneda") %></strong> <%# string.Format("{0:F2}", Eval("Precio")) %></h4>
                                     </div>
                                     <div class="card-footer">
-                                        <div class="row mb-3">
-                                            <span class="col-4"><i class="fa-solid fa-door-closed pe-1"></i>Ambientes: <%#Eval("Ambientes") %></span>
-                                            <span class="col-4"><i class="fa-solid fa-bed pe-1"></i>Dormitorios: <%#Eval("Dormitorios") %></span>
-                                            <span class="col-4"><i class="fa-solid fa-bath pe-1"></i>Baños: <%#Eval("Baños") %></span>
+                                        <!-- Mostrar solo si no es un terreno -->
+                                        <div class="row mb-3" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                            <span class="col-4"><i class="fa-solid fa-door-closed pe-1"></i>Ambientes: <%# Eval("Ambientes") %></span>
+                                            <span class="col-4"><i class="fa-solid fa-bed pe-1"></i>Dormitorios: <%# Eval("Dormitorios") %></span>
+                                            <span class="col-4"><i class="fa-solid fa-bath pe-1"></i>Baños: <%# Eval("Baños") %></span>
                                         </div>
                                         <div class="row">
-                                            <span class="col-4"><i class="fa-solid fa-house pe-1"></i>M² terreno: <%#Eval("MetrosTotales") %></span>
-                                            <span class="col-4"><i class="fa-solid fa-ruler-combined pe-1"></i>M² cubiertos: <%#Eval("MetrosCubiertos") %></span>
-                                            <span class="col-4"><i class="fa-solid fa-car pe-1"></i>Cocheras: <%#Eval("Cocheras") %></span>
+                                            <span class="col-4"><i class="fa-solid fa-house pe-1"></i>M² terreno: <%# Eval("MetrosTotales") %></span>
+                                            <!-- Mostrar solo si no es un terreno -->
+                                            <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                                <i class="fa-solid fa-ruler-combined pe-1"></i>M² cubiertos: <%# Eval("MetrosCubiertos") %></span>
+                                            <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                                <i class="fa-solid fa-car pe-1"></i>Cocheras: <%# Eval("Cocheras") %></span>
                                         </div>
                                     </div>
                                 </div>
@@ -119,9 +123,16 @@
                     </a>
                 </ItemTemplate>
             </asp:Repeater>
-            <div class="margin-top">
-                <asp:Label CssClass="text-danger" ID="lblError" runat="server" />
+            <% if (listaFiltrada != null)
+                {
+                    if (listaFiltrada.Count == 0)
+                    { %>
+            <div class="margin-top text-center">
+                <h2 class="h1">No se encontraron resultados</h2>
+                <h3>No hay ninguna propiedad con las características que ha seleccionado</h3>
             </div>
+                <% } %>
+            <% } %>
         </div>
     </div>
 </asp:Content>

@@ -35,5 +35,6 @@ namespace Dominio
         public decimal Latitud { get; set; }
         public decimal Longitud { get; set; }
         public string Ubicacion { get; set; }
+        public bool Terreno { get; set; }
     }
 }

@@ -5,7 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="margin-top">
         <div class="container">
-            <h1>Generar QR</h1>
+            <h1 class="mt-4">Generador de QR</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item">Herramientas</li>
+                <li class="breadcrumb-item active">Generador de QR</li>
+            </ol>
             <div class="mb-3">
                 <label for="tbxUrl" class="form-label">Introduzca la URL de la propiedad</label>
                 <div class="d-flex">
@@ -17,7 +21,7 @@
             </div>
             <div class="mb-3">
                 <label for="tbxRenombrar" class="form-label">Nombre del archivo</label>
-                <asp:TextBox runat="server" CssClass="form-control" ID="tbxRenombrar"/>
+                <asp:TextBox runat="server" CssClass="form-control" ID="tbxRenombrar" />
             </div>
             <div>
                 <asp:Image CssClass="mb-3" ID="imgQR" runat="server" />

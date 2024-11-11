@@ -33,57 +33,30 @@ namespace Ventanas
         protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control dgvListaPropiedades.
+        /// Control TableListView.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvListaPropiedades;
+        protected global::System.Web.UI.WebControls.ListView TableListView;
 
         /// <summary>
-        /// Control ddlTipoPropiedad.
+        /// Control TableDataPager.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoPropiedad;
+        protected global::System.Web.UI.WebControls.DataPager TableDataPager;
 
         /// <summary>
-        /// Control ddlTipoContrato.
+        /// Control lblTablaVacia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoContrato;
-
-        /// <summary>
-        /// Control ddlDepartamentos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDepartamentos;
-
-        /// <summary>
-        /// Control ddlLocalidades.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidades;
-
-        /// <summary>
-        /// Control ddlPueblos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPueblos;
+        protected global::System.Web.UI.WebControls.Label lblTablaVacia;
     }
 }

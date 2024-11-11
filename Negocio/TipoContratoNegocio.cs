@@ -67,7 +67,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Update [Tipo.Contrato] Set Descripcion = @Descripcion Where Id = @ Id");
+                datos.setearConsulta("Update [Tipo.Contrato] Set Descripcion = @Descripcion Where Id = @Id");
                 datos.setearParametro("@Descripcion", modificado.Descripcion);
                 datos.setearParametro("@Id", modificado.Id);
                 datos.ejecutarAccion();

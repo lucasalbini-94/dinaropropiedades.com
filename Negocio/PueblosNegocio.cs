@@ -51,7 +51,7 @@ namespace Negocio
             {
                 datos.setearConsulta("Insert Into Pueblos Values (@Descripcion, @IdLocalidad)");
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@Localidad", nuevo.Localidad.Id);
+                datos.setearParametro("@IdLocalidad", nuevo.Localidad.Id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Update Pueblos Set Descripcio = @Descripcion, IdLocalidad = @IdLocalidad Where Id = @Id");
+                datos.setearConsulta("Update Pueblos Set Descripcion = @Descripcion, IdLocalidad = @IdLocalidad Where Id = @Id");
                 datos.setearParametro("@Descripcion", modificado.Descripcion);
                 datos.setearParametro("@IdLocalidad", modificado.Localidad.Id);
                 datos.setearParametro("@Id", modificado.Id);

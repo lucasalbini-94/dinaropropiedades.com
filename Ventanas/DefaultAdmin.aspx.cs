@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Negocio;
 using Dominio;
+using System.Web.UI.HtmlControls;
 
 namespace Ventanas
 {
@@ -13,127 +14,83 @@ namespace Ventanas
     {
         private List<Propiedades> listaPropiedades;
         private List<Propiedades> listaFiltrada;
-        private List<TipoContrato> listaTipoContrato;
-        private List<TipoPropiedad> listaTipoPropiedad;
-        private List<Departamentos> listaDepartamentos;
-        private List<Localidades> listaLocalidades;
-        private List<Pueblos> listaPueblos;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (Session["sesionActiva"] == null)
             {
-                // Verificar si hay sesion activa
-                if (Session["sesionActiva"] is null)
-                {
-                    Response.Redirect("Login.aspx", false);
-                    return;
-                }
-
-                PropiedadesNegocio negocioProp = new PropiedadesNegocio();
-                TipoContratoNegocio negocioTipoCon = new TipoContratoNegocio();
-                TipoPropiedadNegocio negocioTipoProp = new TipoPropiedadNegocio();
-                DptoNegocio negocioDpto = new DptoNegocio();
-                LocalidadesNegocio negocioLocal = new LocalidadesNegocio();
-                PueblosNegocio negocioPueblo = new PueblosNegocio();
-                listaPropiedades = new List<Propiedades>();
-                listaTipoContrato = new List<TipoContrato>();
-                listaTipoPropiedad = new List<TipoPropiedad>();
-                listaDepartamentos = new List<Departamentos>();
-                listaLocalidades = new List<Localidades>();
-                listaPueblos = new List<Pueblos>();
-
-                if (!IsPostBack)
-                {
-
-                    // Cargar tabla
-
-                    listaPropiedades = negocioProp.listar();
-                    dgvListaPropiedades.DataSource = listaPropiedades;
-                    dgvListaPropiedades.DataBind();
-
-                    // Cargar desplegables
-                    // Tipo de contrato
-
-                    listaTipoContrato = negocioTipoCon.listar();
-                    ddlTipoContrato.DataSource = listaTipoContrato;
-                    ddlTipoContrato.DataTextField = "Descripcion";
-                    ddlTipoContrato.DataValueField = "Id";
-                    ddlTipoContrato.DataBind();
-
-                    // Tipo de propiedad
-
-                    listaTipoPropiedad = negocioTipoProp.listar();
-                    ddlTipoPropiedad.DataSource = listaTipoPropiedad;
-                    ddlTipoPropiedad.DataTextField = "Descripcion";
-                    ddlTipoPropiedad.DataValueField = "Id";
-                    ddlTipoPropiedad.DataBind();
-
-                    // Departamentos
-
-                    listaDepartamentos = negocioDpto.listar();
-                    ddlDepartamentos.DataSource = listaDepartamentos;
-                    ddlDepartamentos.DataTextField = "Descripcion";
-                    ddlDepartamentos.DataValueField = "Id";
-                    ddlDepartamentos.DataBind();
-
-                    // Localidades
-
-                    listaLocalidades = negocioLocal.listar();
-                    ddlLocalidades.DataSource = listaLocalidades;
-                    ddlLocalidades.DataTextField = "Descripcion";
-                    ddlLocalidades.DataValueField = "Id";
-                    ddlLocalidades.DataBind();
-
-                    // Pueblos
-
-                    listaPueblos = negocioPueblo.listar();
-                    ddlPueblos.DataSource = listaPueblos;
-                    ddlPueblos.DataTextField = "Descripcion";
-                    ddlPueblos.DataValueField = "Id";
-                    ddlPueblos.DataBind();
-                }
-                else
-                {
-                    listaPropiedades = negocioProp.listar();
-                }
-            }
-            catch (Exception ex)
-            {
-                string error = ex.ToString();
-                Session.Add("error", error);
-                Response.Redirect("ErrorAdmin.aspx");
+                Response.Redirect("Login.aspx", false);
+                return;
             }
 
+            PropiedadesNegocio negocioProp = new PropiedadesNegocio();
+
+            listaPropiedades = new List<Propiedades>();
+
+            if (!IsPostBack)
+            {
+
+                // Cargar tabla
+
+                listaPropiedades = negocioProp.listar();
+                TableListView.DataSource = listaPropiedades;
+                TableListView.DataBind();
+
+            }
+            else
+            {
+                listaPropiedades = negocioProp.listar();
+            }
         }
 
-        protected void dgvListaPropiedades_SelectedIndexChanged(object sender, EventArgs e)
+        protected override void OnPreRender(EventArgs e)
         {
-            // Guardar Id de la propiedad seleccionada
-            string id = dgvListaPropiedades.SelectedDataKey.Value.ToString();
-
-            //Filtrar lista y obtener la propiedad por Id
-            Propiedades seleccionada = listaPropiedades.Find(x => x.Id == int.Parse(id));
-
-            //Guardar propiedad en sesión
-            Session.Add("propiedadSeleccionada", seleccionada);
-
-            //Redirigir a página de administración con id por URL
-            Response.Redirect("PropiedadAdmin.aspx?id=" + id);
+            base.OnPreRender(e);
+            if (listaFiltrada != null)
+                TableListView.DataSource = listaFiltrada;
+            else
+                TableListView.DataSource = listaPropiedades;
+            TableListView.DataBind();
         }
 
-        protected void dgvListaPropiedades_PageIndexChanged(object sender, GridViewPageEventArgs e)
+        protected void TableListView_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
-            dgvListaPropiedades.PageIndex = e.NewPageIndex;
-            dgvListaPropiedades.DataBind();
+            //if (e.Item.ItemType == ListViewItemType.DataItem)
+            //{
+            //    Propiedades propiedad = (Propiedades)e.Item.DataItem;
+            //    // No necesitas FindControl aquí si Eval maneja todo en el lado del cliente
+
+            //}
         }
+
+        protected void TableListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "EditarPropiedad")
+            {
+                // Obtén el ID de la propiedad desde CommandArgument
+                string idPropiedad = e.CommandArgument.ToString();
+
+                //Filtrar lista y obtener la propiedad por Id
+                Propiedades seleccionada = listaPropiedades.Find(x => x.Id == int.Parse(idPropiedad));
+
+                //Guardar propiedad en sesión
+                Session.Add("propiedadSeleccionada", seleccionada);
+
+                // Redirige a la página de PropiedadesAdmin con el ID en la URL
+                Response.Redirect("PropiedadAdmin.aspx?id=" + idPropiedad);
+            }
+        }
+
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            string filtro = tbxBuscar.Text;
+            string filtro = tbxBuscar.Text.Trim();
             listaFiltrada = listaPropiedades.FindAll(x => x.Titulo.ToUpper().Contains(filtro.ToUpper()));
-            dgvListaPropiedades.DataSource = listaFiltrada;
-            dgvListaPropiedades.DataBind();
+            TableListView.DataSource = listaFiltrada;
+            TableListView.DataBind();
+
+            lblTablaVacia.Text = listaFiltrada.Count > 0 ? "" : "No se encontraron resultados";
+            lblTablaVacia.Visible = listaFiltrada.Count == 0;
         }
     }
 }

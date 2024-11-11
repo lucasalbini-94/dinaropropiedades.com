@@ -8,12 +8,12 @@
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <div class="row mt-3">
-                    <div class="mb-3">
-                        <h1>Administrar desplegable</h1>
-                    </div>
-                    <div class="mb-3">
-                        <asp:Label ID="lblEncabezado" runat="server" CssClass="h3" />
-                    </div>
+                    <h1 runat="server" id="encabezado" class="mt-4"></h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item">Mantenimiento</li>
+                        <li runat="server" class="breadcrumb-item" id="etiqueta1"></li>
+                        <li runat="server" class="breadcrumb-item active" id="etiqueta2"></li>
+                    </ol>
                     <div class="mb-3">
                         <asp:GridView runat="server" ID="dgvDesplegable" DataKeyNames="Id" CssClass="table" OnSelectedIndexChanged="dgvDesplegable_SelectedIndexChanged"></asp:GridView>
                     </div>
@@ -42,8 +42,8 @@
                             <% }
                                 else
                                 { %>
-                            <asp:Button Text="Modificar" runat="server" CssClass="btn btn-primary" ID="btnModificar" OnClick="btnAgregar_Click"/>
-                            <asp:Button Text="Eliminar" runat="server" CssClass="btn btn-danger" ID="btnEliminar" OnClick="btnAgregar_Click"/>
+                            <asp:Button Text="Modificar" runat="server" CssClass="btn btn-primary" ID="btnModificar" OnClick="btnAgregar_Click" />
+                            <asp:Button Text="Eliminar" runat="server" CssClass="btn btn-danger" ID="btnEliminar" OnClick="btnAgregar_Click" />
                             <% } %>
                             <a href="DefaultAdmin.aspx" class="btn btn-primary">Cancelar</a>
                         </div>
@@ -51,5 +51,8 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+        <div class="row">
+            <asp:Label ID="lblError" CssClass="h3 text-danger" runat="server" />
+        </div>
     </div>
 </asp:Content>

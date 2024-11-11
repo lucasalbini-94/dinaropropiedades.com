@@ -12,6 +12,7 @@
         .margin-top {
             margin-top: 56px;
         }
+
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -61,7 +62,7 @@
         <hr />
         <div class="container mt-5">
             <div class="row">
-                <div class=" col-sm-6 col-md-6 col-lg-4 col-x-4">
+                <div class=" col-sm-6 col-md-6 col-lg-4 col-xl-4">
                     <h3>Menú</h3>
                     <div class="mb-3">
                         <ul>
@@ -83,36 +84,50 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-x-4">
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                     <h3>Contacto</h3>
                     <div class="mb-3">
                         <ul>
                             <li>
                                 <a target="_blank" href="https://wa.me/2616006009" class="link-underline-opacity-0 link-dark">
-                                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                                    <i class="fa-brands fa-whatsapp"></i>WhatsApp
                                 </a>
                             </li>
                             <li>
                                 <a target="_blank" href="mailto:dinaropropiedades@gmail.com" class="link-underline-opacity-0 link-dark">
-                                    <i class="fa-regular fa-envelope"></i> Gmail
+                                    <i class="fa-regular fa-envelope"></i>Gmail
                                 </a>
                             </li>
                             <li>
                                 <a target="_blank" href="https://www.instagram.com/dinaropropiedades" class="link-underline-opacity-0 link-dark">
-                                    <i class="fa-brands fa-instagram"></i> Instagram
+                                    <i class="fa-brands fa-instagram"></i>Instagram
                                 </a>
                             </li>
                             <li>
                                 <a target="_blank" href="https://www.facebook.com/share/i9KTSPbey3RTiTWv/?mibextid=qi2Omg" class="link-underline-opacity-0 link-dark">
-                                    <i class="fa-brands fa-facebook"></i> Faceboock
+                                    <i class="fa-brands fa-facebook"></i>Faceboock
                                 </a>
                             </li>
                             <li>
                                 <a target="_blank" href="www.linkedin.com/in/lucas-albini" class="link-underline-opacity-0 link-dark">
-                                    <i class="fa-brands fa-youtube"></i> You Tube
+                                    <i class="fa-brands fa-youtube"></i>You Tube
                                 </a>
                             </li>
                         </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 d-flex">
+                    <div class="img-footer text-center">
+                        <img style="height:150px;" class="mb-1" src="/Images/ImgApp/qrmatricula.jpg" alt="QR Matricula" />
+                        <h6><strong>Elio Ezequiel Dinaro</strong></h6>
+                        <h6><strong>Matrícula N° 2070</strong></h6>
+                        <h6>CORREDOR PÚBLICO INMOBILIARIO</h6>
+                    </div>
+                    <div class="text-center">
+                        <img class="mb-1" style="height: 100px;" src="/Images/ImgApp/colegiodecorredores.jpg" alt="Imágen del Colegio de Corredores Públicos Inmobiliarios, provincia de Mendoza" />
+                        <p>COLEGIO DE <br />
+                            CORREDORES PÚBLICOS <br />
+                            INMOBILIARIOS</p>
                     </div>
                 </div>
             </div>

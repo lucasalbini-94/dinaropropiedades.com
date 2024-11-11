@@ -39,10 +39,6 @@
                 </p>
             </div>
             <div class="col-lg-3"></div>
-           <%-- <div class="col-lg-6 col-12 mt-5">
-                <img class="container-fluid" src="/Images/ImgApp/elioprop.svg"
-                    alt="Alternate Text" />
-            </div>--%>
         </div>
         <div class="row mb-5">
             <div class="col-lg-6 col-12 mt-5">
@@ -52,7 +48,7 @@
             <div class="col-lg-6 col-12 mt-5 text-center align-content-center">
                 <p class="ms-5 me-5">
                     Como un valor añadido, en <strong>Dinaro Propiedades</strong> también contamos con <strong>Construcciones del Sol</strong>, nuestra empresa hermana especializada en construcción. 
-                    Si no encuentras una propiedad que se ajuste a tus necesidades, o si tienes un terreno y deseas construir desde cero, estamos aquí para ayudarte a llevar a cabo tu proyecto. 
+                    Si no encontrás una propiedad que se ajuste a tus necesidades, o si tenés un terreno y deseas construir desde cero, estamos aca para ayudarte a llevar a cabo tu proyecto. 
                 </p>
                 <p class="ms-5 me-5">
                     Ofrecemos servicios de construcción que van desde el diseño hasta la entrega final, asegurando calidad y satisfacción en cada etapa.
@@ -64,15 +60,6 @@
         <div class="imagen-about">
         </div>
     </div>
-    <%-- <div class="row mb-5">
-            <div class="col-lg-6 col-12 mt-5 text-center align-content-center">
-                <h2>En <strong>Dinaro Propiedades</strong>, más que vender propiedades, creamos hogares.</h2>
-            </div>
-           <%-- <div class="col-lg-6 col-12 mt-5">
-                <img class="container-fluid" src="/Images/ImgApp/paisajeconlogo.png"
-                    alt="Alternate Text" />
-                </div>
-           </div>--%>
     <div class="container">
         <div class="row">
             <section class="container mt-5">

@@ -40,6 +40,9 @@ namespace Ventanas
                     // Seleccionar propiedad de la lista por el ID
                     seleccionada = listaPropiedades.Find(x => x.Id == id);
 
+                    // Definir si es o no un terreno
+                    Helper.separarPropiedadesYTerrenos(ref seleccionada);
+
                     // Cargar imágenes de la propiedad
                     ImagenesNegocio imagenesNegocio = new ImagenesNegocio();
                     listaImagenes = imagenesNegocio.listar(id, false);

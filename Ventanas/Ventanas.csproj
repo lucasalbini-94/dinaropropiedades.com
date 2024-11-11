@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AyudaContacto.aspx" />
+    <Content Include="css\styles.css" />
     <Content Include="DefaultAdmin.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Descripcion.aspx" />
@@ -87,6 +88,7 @@
     <Content Include="ErrorAdmin.aspx" />
     <Content Include="ErrorUser.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="js\scripts.js" />
     <Content Include="Lista.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="NuestrasPropiedades.aspx" />
