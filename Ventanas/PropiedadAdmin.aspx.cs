@@ -323,6 +323,7 @@ namespace Ventanas
                 aux.Pueblo = new Pueblos();
                 aux.Pueblo.Id = int.Parse(ddlPueblos.SelectedValue);
                 aux.Ubicacion = tbxUbicacion.Text;
+                aux.AltImagen = tbxPalabrasClave.Text;
 
                 negocioPropiedades.modificar(aux);
 
@@ -339,6 +340,7 @@ namespace Ventanas
                         if (primerItem)
                         {
                             img.Principal = true;
+                            img.Alt = aux.AltImagen;
                             primerItem = false;
                         }
                         else

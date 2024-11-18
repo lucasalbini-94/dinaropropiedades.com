@@ -12,7 +12,6 @@
         .margin-top {
             margin-top: 56px;
         }
-
     </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -62,6 +61,24 @@
         <hr />
         <div class="container mt-5">
             <div class="row">
+                <div class="col-lg-4 col-xl-4 d-flex">
+                    <div class="img-footer text-center">
+                        <img style="height: 150px;" class="mb-1" src="/Images/ImgApp/qrmatricula.jpg" alt="QR Matricula" />
+                        <h6><strong>Elio Ezequiel Dinaro</strong></h6>
+                        <h6><strong>Matrícula N° 2070</strong></h6>
+                        <h6>CORREDOR PÚBLICO INMOBILIARIO</h6>
+                    </div>
+                    <div class="text-center">
+                        <img class="mb-1" style="height: 100px;" src="/Images/ImgApp/colegiodecorredores.jpg" alt="Imágen del Colegio de Corredores Públicos Inmobiliarios, provincia de Mendoza" />
+                        <p>
+                            COLEGIO DE
+                            <br />
+                            CORREDORES PÚBLICOS
+                            <br />
+                            INMOBILIARIOS
+                        </p>
+                    </div>
+                </div>
                 <div class=" col-sm-6 col-md-6 col-lg-4 col-xl-4">
                     <h3>Menú</h3>
                     <div class="mb-3">
@@ -114,20 +131,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-xl-4 d-flex">
-                    <div class="img-footer text-center">
-                        <img style="height:150px;" class="mb-1" src="/Images/ImgApp/qrmatricula.jpg" alt="QR Matricula" />
-                        <h6><strong>Elio Ezequiel Dinaro</strong></h6>
-                        <h6><strong>Matrícula N° 2070</strong></h6>
-                        <h6>CORREDOR PÚBLICO INMOBILIARIO</h6>
-                    </div>
-                    <div class="text-center">
-                        <img class="mb-1" style="height: 100px;" src="/Images/ImgApp/colegiodecorredores.jpg" alt="Imágen del Colegio de Corredores Públicos Inmobiliarios, provincia de Mendoza" />
-                        <p>COLEGIO DE <br />
-                            CORREDORES PÚBLICOS <br />
-                            INMOBILIARIOS</p>
                     </div>
                 </div>
             </div>

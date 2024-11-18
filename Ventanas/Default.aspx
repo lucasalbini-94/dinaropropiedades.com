@@ -35,6 +35,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <%--Propiedades destacadas--%>
     <%--Portada--%>
     <header class="encabezado">
         <img class="img-encabezado" src="./Images/ImgApp/portada.jpg" alt="Portada" loading="lazy">
@@ -46,10 +47,9 @@
     
     <%--Propiedades destacadas--%>
     <section class="container mt-3">
-        <%--<div class="text-center">
-            <h2 class="h1">Propiedades destacadas</h2>
-        </div>--%>
-        <%--Repetidor de propiedades--%>
+        <div class="text-center">
+            <h3>Propiedades destacadas</h3>
+        </div>
         <asp:Repeater runat="server" ID="repDestacados">
             <ItemTemplate>
                 <a class="link-light" href="Descripcion.aspx?id=<%#Eval("Id") %>">
