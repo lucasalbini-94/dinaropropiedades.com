@@ -27,7 +27,7 @@ namespace Ventanas
         void Application_Error(object sender, EventArgs e)
         {
             Exception ex = Server.GetLastError();
-            Session.Add("error", ex.ToString());
+            Session.Add("error", ex.InnerException.Message);
             if (Session["sesionActiva"] != null)
             {
                 Server.Transfer("ErrorAdmin.aspx");

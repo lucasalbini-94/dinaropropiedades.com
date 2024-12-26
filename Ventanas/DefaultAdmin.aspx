@@ -43,12 +43,12 @@
                 <tr>
                     <td><%# Eval("Codigo") %></td>
                     <td><%# Eval("Titulo") %></td>
-                    <td><%# Eval("Destacado", "{0}") %></td>
-                    <td><%# Eval("Activo", "{0}") %></td>
+                    <td><%# Eval("Destacado", "{0}").Replace("True", "SI").Replace("False", "NO") %></td>
+                    <td><%# Eval("Activo", "{0}").Replace("True", "SI").Replace("False", "NO") %></td>
                     <td><%# Eval("TipoPropiedad.Descripcion") %></td>
                     <td><%# Eval("TipoContrato.Descripcion") %></td>
                     <td><%# Eval("Moneda") %></td>
-                    <td><%# Eval("Precio", "{0:C2}") %></td>
+                    <td><%# string.Format("{0:###,###,###}", Eval("Precio")).Replace(",", ".") %></td>
                     <td>
                         <asp:LinkButton runat="server" ID="btnEditar" Text="✍ Editar" CommandName="EditarPropiedad" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-primary" />
                     </td>

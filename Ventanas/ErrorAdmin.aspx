@@ -6,7 +6,7 @@
         <%--<img src="/Images/ImgApp/imgError.png" width="300px" height="200px" alt="Alternate Text" class="text-center card-img"/>--%>
     </div>
     <div class="row">
-        <h1 class="text-center mt-5">¡Ha ocurrido un error inesperado!</h1>
-        <p><%:error %></p>
+        <h1 class="text-center mt-5 mb-5">¡Ha ocurrido un error inesperado!</h1>
+        <p class="text-center"><%:error %></p>
     </div>
 </asp:Content>

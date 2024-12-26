@@ -99,7 +99,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title mb-3"><%# Eval("Titulo") %></h5>
                                         <p class="card-text"><%# Eval("Bio") %></p>
-                                        <h4 class="card-subtitle text-danger mb-3"><strong><%# Eval("Moneda") %></strong> <%# string.Format("{0:F2}", Eval("Precio")) %></h4>
+                                        <h4 class="card-subtitle text-danger mb-3"><strong><%# Eval("Moneda") %></strong> <%# string.Format("{0:###,###,###}", Eval("Precio")).Replace(",", ".") %></h4>
                                     </div>
                                     <div class="card-footer">
                                         <!-- Mostrar solo si no es un terreno -->
