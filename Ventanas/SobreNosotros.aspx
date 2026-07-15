@@ -27,6 +27,13 @@
         <div class="row mb-5">
             <div class="col-lg-3"></div>
             <div class="col-lg-6 col-12 mt-5 text-center align-content-center">
+                <a href="https://maps.app.goo.gl/LSLJF5sZCGhQsP7s8" target="_blank"><img src="/Images/ImgApp/banner.png" alt=""></a>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 col-12 mt-5 text-center align-content-center">
                 <h1 class="mb-5">¿Quienes somos?</h1>
                 <p class="ms-5 me-5">
                     En <strong>Dinaro Propiedades</strong>, nos dedicamos a conectar a nuestros clientes con sus hogares ideales. Nos encontramos en Potrerillos, Mendoza, y con una sólida experiencia en el mercado inmobiliario local, 

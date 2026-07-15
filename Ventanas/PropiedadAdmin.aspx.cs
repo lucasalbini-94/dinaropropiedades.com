@@ -226,6 +226,8 @@ namespace Ventanas
                     // Cargar datos de la sesion si existen
                     if (Session["datosGuardados"] != null)
                         cargarDatosSesion();
+                    // Borrar esos datos una vez cargados para evitar el problema de la recarga
+                    borrarDatosDeSesión();
                 }
             }
             catch (Exception ex)
@@ -404,6 +406,9 @@ namespace Ventanas
                     }
 
                     Session.Remove("lista");
+                    borrarDatosDeSesión();
+
+                    borrarImagenesDeCarpetaTempoaral();
                     Response.Redirect("DefaultAdmin.aspx", false);
                 }
 
@@ -494,6 +499,10 @@ namespace Ventanas
                     Session.Remove("listaImagenes");
                     Response.Redirect("DefaultAdmin.aspx", false);
                 }
+
+                borrarDatosDeSesión();
+
+                borrarImagenesDeCarpetaTempoaral();
             }
             catch (Exception ex)
             {
@@ -507,6 +516,10 @@ namespace Ventanas
 
             try
             {
+                borrarDatosDeSesión();
+
+                borrarImagenesDeCarpetaTempoaral();
+
                 int id = int.Parse(Request.QueryString["id"]);
                 negocio.eliminar(id);
                 Response.Redirect("DefaultAdmin.aspx", false);
@@ -521,38 +534,9 @@ namespace Ventanas
         {
             try
             {
-                Session.Remove("campoCodigo");
-                Session.Remove("campoTitulo");
-                Session.Remove("campoTipoContrato");
-                Session.Remove("campoTipoPropiedad");
-                Session.Remove("campoMoneda");
-                Session.Remove("campoPrecio");
-                Session.Remove("campoActivo");
-                Session.Remove("campoDestacado");
-                Session.Remove("campoBio");
-                Session.Remove("campoDescripcion");
-                Session.Remove("campoAmbientes");
-                Session.Remove("campoBaños");
-                Session.Remove("campoDormitorios");
-                Session.Remove("campoMtTotales");
-                Session.Remove("campoMtCubiertos");
-                Session.Remove("campoPlantas");
-                Session.Remove("campoCocheras");
-                Session.Remove("campoDpto");
-                Session.Remove("campoLocalidades");
-                Session.Remove("campoPueblos");
-                Session.Remove("campoUbicacion");
-                Session.Remove("campoVideo");
-                Session.Remove("datosGuardados");
+                borrarDatosDeSesión();
 
-                string rutaTemporal = Page.MapPath("~/Images/ImgPropiedades/Temporales/");
-                if (Directory.GetFiles(rutaTemporal).Length > 0)
-                {
-                    foreach (var item in Directory.GetFiles(rutaTemporal))
-                    {
-                        File.Delete(item);
-                    }
-                }
+                borrarImagenesDeCarpetaTempoaral();
 
                 Response.Redirect("DefaultAdmin.aspx", false);
             }
@@ -722,6 +706,45 @@ namespace Ventanas
                 Session.Add("campoUbicacion", tbxUbicacion.Text);
 
             Session.Add("datosGuardados", true);
+        }
+
+        public void borrarDatosDeSesión()
+        {
+            Session.Remove("campoCodigo");
+            Session.Remove("campoTitulo");
+            Session.Remove("campoTipoContrato");
+            Session.Remove("campoTipoPropiedad");
+            Session.Remove("campoMoneda");
+            Session.Remove("campoPrecio");
+            Session.Remove("campoActivo");
+            Session.Remove("campoDestacado");
+            Session.Remove("campoBio");
+            Session.Remove("campoDescripcion");
+            Session.Remove("campoAmbientes");
+            Session.Remove("campoBaños");
+            Session.Remove("campoDormitorios");
+            Session.Remove("campoMtTotales");
+            Session.Remove("campoMtCubiertos");
+            Session.Remove("campoPlantas");
+            Session.Remove("campoCocheras");
+            Session.Remove("campoDpto");
+            Session.Remove("campoLocalidades");
+            Session.Remove("campoPueblos");
+            Session.Remove("campoUbicacion");
+            Session.Remove("campoVideo");
+            Session.Remove("datosGuardados");
+        }
+
+        public void borrarImagenesDeCarpetaTempoaral()
+        {
+            string rutaTemporal = Page.MapPath("~/Images/ImgPropiedades/Temporales/");
+            if (Directory.GetFiles(rutaTemporal).Length > 0)
+            {
+                foreach (var item in Directory.GetFiles(rutaTemporal))
+                {
+                    File.Delete(item);
+                }
+            }
         }
 
         protected void guardarEnSesion_SelectedIndexChanged(object sender, EventArgs e)

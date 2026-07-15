@@ -39,6 +39,8 @@ namespace Ventanas
                     Helper.separarPropiedadesYTerrenos(ref listaDestacadas);
                     //Listar Imagenes principales
                     listaImagenes = imagenesNegocio.listar(-1, true);
+                    //Invertir lista de destacadas
+                    listaDestacadas.Reverse();
 
                     foreach (Propiedades propiedad in listaDestacadas)
                     {

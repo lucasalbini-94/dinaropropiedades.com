@@ -33,6 +33,7 @@ namespace Ventanas
                 // Cargar tabla
 
                 listaPropiedades = negocioProp.listar();
+                listaPropiedades.Reverse();
                 TableListView.DataSource = listaPropiedades;
                 TableListView.DataBind();
 

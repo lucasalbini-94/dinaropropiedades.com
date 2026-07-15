@@ -2,10 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .carousel-inner {
+/*        .carousel-inner {
             width: 546px;
             height: 409px;
-        }
+        }*/
 
         .carousel-item img {
             max-height: 100%;

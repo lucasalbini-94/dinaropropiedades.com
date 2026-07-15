@@ -95,7 +95,8 @@ namespace Ventanas
                 // Separar terrenos y propiedades
                 Helper.separarPropiedadesYTerrenos(ref listaPropiedades);
                 listaImagenes = imagenesNegocio.listar(-1, true);
-
+                //Invertirt lista
+                listaPropiedades.Reverse();
 
                 foreach (Propiedades prop in listaPropiedades)
                 {

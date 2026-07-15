@@ -35,7 +35,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <%--Propiedades destacadas--%>
+    <%--Propiedades destacadas--%>
     <%--Portada--%>
     <header class="encabezado">
         <img class="img-encabezado" src="./Images/ImgApp/portada.jpg" alt="Portada" loading="lazy">
@@ -44,9 +44,13 @@
             <p class="h1-encabezado">Encontralo acá...</p>
         </div>
     </header>
-    
+
     <%--Propiedades destacadas--%>
     <section class="container mt-3">
+        <div class="row mb-5 text-center">
+            <a href="https://maps.app.goo.gl/LSLJF5sZCGhQsP7s8" target="_blank">
+                <img src="/Images/ImgApp/banner.png" alt=""></a>
+        </div>
         <div class="text-center">
             <h3>Propiedades destacadas</h3>
         </div>
@@ -65,21 +69,21 @@
                                     <h4 class="card-subtitle text-danger mb-3"><strong><%#Eval("Moneda") %></strong> <%#string.Format("{0:###,###,###}", Eval("Precio")).Replace(",", ".") %></h4>
                                 </div>
                                 <div class="card-footer">
-                                        <!-- Mostrar solo si no es un terreno -->
-                                        <div class="row mb-3" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
-                                            <span class="col-4"><i class="fa-solid fa-door-closed pe-1"></i>Ambientes: <%# Eval("Ambientes") %></span>
-                                            <span class="col-4"><i class="fa-solid fa-bed pe-1"></i>Dormitorios: <%# Eval("Dormitorios") %></span>
-                                            <span class="col-4"><i class="fa-solid fa-bath pe-1"></i>Baños: <%# Eval("Baños") %></span>
-                                        </div>
-                                        <div class="row">
-                                            <span class="col-4"><i class="fa-solid fa-house pe-1"></i>M² terreno: <%# Eval("MetrosTotales") %></span>
-                                            <!-- Mostrar solo si no es un terreno -->
-                                            <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
-                                                <i class="fa-solid fa-ruler-combined pe-1"></i>M² cubiertos: <%# Eval("MetrosCubiertos") %></span>
-                                            <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
-                                                <i class="fa-solid fa-car pe-1"></i>Cocheras: <%# Eval("Cocheras") %></span>
-                                        </div>
+                                    <!-- Mostrar solo si no es un terreno -->
+                                    <div class="row mb-3" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                        <span class="col-4"><i class="fa-solid fa-door-closed pe-1"></i>Ambientes: <%# Eval("Ambientes") %></span>
+                                        <span class="col-4"><i class="fa-solid fa-bed pe-1"></i>Dormitorios: <%# Eval("Dormitorios") %></span>
+                                        <span class="col-4"><i class="fa-solid fa-bath pe-1"></i>Baños: <%# Eval("Baños") %></span>
                                     </div>
+                                    <div class="row">
+                                        <span class="col-4"><i class="fa-solid fa-house pe-1"></i>M² terreno: <%# Eval("MetrosTotales") %></span>
+                                        <!-- Mostrar solo si no es un terreno -->
+                                        <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                            <i class="fa-solid fa-ruler-combined pe-1"></i>M² cubiertos: <%# Eval("MetrosCubiertos") %></span>
+                                        <span class="col-4" runat="server" visible='<%# MostrarSiNoEsTerreno((bool)Eval("Terreno")) %>'>
+                                            <i class="fa-solid fa-car pe-1"></i>Cocheras: <%# Eval("Cocheras") %></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
