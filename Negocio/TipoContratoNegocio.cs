@@ -4,102 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
-using Servicios;
+using Servicios.Interfaces;
+using Servicios.Repositorios;
 
 namespace Negocio
 {
     public class  TipoContratoNegocio
     {
-        public List<TipoContrato> listar()
+        private readonly ITipoContratoRepository _repo;
+
+        public TipoContratoNegocio()
         {
-            List<TipoContrato> lista = new List<TipoContrato>();
-            AccesoDB datos = new AccesoDB();
-
-            try
-            {
-                datos.setearConsulta("Select Id, Descripcion From [Tipo.Contrato]");
-                datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    TipoContrato aux = new TipoContrato();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-
-                    lista.Add(aux);
-                }
-
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+            _repo = new TipoContratoRepository();
         }
 
-        public void insertar(TipoContrato nuevo)
+        public TipoContratoNegocio(ITipoContratoRepository repo)
         {
-            AccesoDB datos = new AccesoDB();
-
-            try
-            {
-                datos.setearConsulta("Insert Into [Tipo.Contrato] Values (@Descripcion)");
-                datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+            _repo = repo;
         }
 
-        public void modificar(TipoContrato modificado)
+        public List<TipoContrato> ListarTodos()
         {
-            AccesoDB datos = new AccesoDB();
-
-            try
-            {
-                datos.setearConsulta("Update [Tipo.Contrato] Set Descripcion = @Descripcion Where Id = @Id");
-                datos.setearParametro("@Descripcion", modificado.Descripcion);
-                datos.setearParametro("@Id", modificado.Id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+            return _repo.ObtenerTodos();
         }
 
-        public void eliminar(int id)
+        public TipoContrato ObtenerPorId(int id)
         {
-            AccesoDB datos = new AccesoDB();
+            return _repo.ObtenerPorId(id);
+        }
 
-            try
-            {
-                datos.setearConsulta("Delete [Tipo.Contrato] Where Id = @Id");
-                datos.setearParametro("@Id", id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+        public bool Guardar(TipoContrato tipoContrato)
+        {
+            if (string.IsNullOrWhiteSpace(tipoContrato.Descripcion))
+                throw new Exception("La descripción del tipo de contrato no puede estar vacía.");
+
+            if (tipoContrato.Id > 0)
+                return _repo.Modificar(tipoContrato);
+            else
+                return _repo.Agregar(tipoContrato) > 0;
+        }
+
+        public bool Modificar(TipoContrato entidad)
+        {
+            return _repo.Modificar(entidad);
+        }
+
+        public bool Eliminar(int id)
+        {
+            if (id <= 0) throw new ArgumentException("ID no válido.");
+            return _repo.Eliminar(id);
         }
     }
 }

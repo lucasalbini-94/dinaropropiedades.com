@@ -28,14 +28,6 @@ namespace Ventanas
         {
             Exception ex = Server.GetLastError();
             Session.Add("error", ex.InnerException.Message);
-            if (Session["sesionActiva"] != null)
-            {
-                Server.Transfer("ErrorAdmin.aspx");
-            }
-            else
-            {
-                Server.Transfer("ErrorUser.aspx");
-            }
         }
     }
 }

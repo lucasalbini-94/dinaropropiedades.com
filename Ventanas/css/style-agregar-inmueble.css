@@ -1,0 +1,486 @@
+﻿/* Barra de acciones superior fija */
+.barra-acciones-sticky {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--beige-fondo, #f8ebc8);
+    padding: 10px 0;
+    margin-bottom: 15px;
+    position: sticky;
+    top: 60px; /* Debajo del header de administración */
+    z-index: 5;
+}
+
+.form-actions-top {
+    display: flex;
+    gap: 10px;
+}
+
+/* Menú de Pestañas (Tabs) */
+.tabs-menu {
+    display: flex;
+    gap: 6px;
+    border-bottom: 2px solid var(--color-border, #e5e0d8);
+    margin-bottom: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+    .tabs-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+.tab-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #5a6a60;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+    .tab-item:hover {
+        color: var(--verde-oscuro, #1B3022);
+    }
+
+    .tab-item.active {
+        color: var(--verde-oscuro, #1B3022);
+        border-bottom-color: var(--marron-claro, #B68D40);
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 6px 6px 0 0;
+    }
+
+    .tab-item i {
+        color: var(--marron-claro, #B68D40);
+    }
+
+/* Paneles de Contenido */
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.25s ease-in-out;
+}
+
+    .tab-pane.active {
+        display: block;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .barra-acciones-sticky {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .form-actions-top {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+/* Layout del Formulario */
+.form-inmueble {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1100px;
+}
+
+.form-card {
+    background: var(--blanco, #fff);
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid var(--color-border, #e5e0d8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+    .form-card h3 {
+        color: var(--verde-oscuro, #1B3022);
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 2px solid var(--color-bg, #fdfaf1);
+        padding-bottom: 8px;
+    }
+
+        .form-card h3 i {
+            color: var(--marron-claro, #B68D40);
+        }
+
+/* Grillas Flexibles */
+.form-grid {
+    display: grid;
+    gap: 16px;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.col-span-2 {
+    grid-column: span 2;
+}
+
+.col-span-3 {
+    grid-column: span 3;
+}
+
+/* Controles de Formulario */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+    .form-group label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #4a5568;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        border: 1px solid var(--color-border, #e5e0d8);
+        border-radius: 6px;
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s;
+        background-color: #fff;
+    }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--marron-claro, #B68D40);
+        }
+
+/* Checkboxes de Características */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    background: var(--color-bg, #fdfaf1);
+    border: 1px solid var(--color-border, #e5e0d8);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--texto, #2D2D2D);
+    user-select: none;
+}
+
+    .custom-checkbox input {
+        cursor: pointer;
+    }
+
+    .custom-checkbox span i {
+        color: var(--verde-oscuro, #1B3022);
+        margin-right: 4px;
+    }
+
+/* Switches para Destacado y Activo */
+.switches-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.switch-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .switch-control input {
+        display: none;
+    }
+
+.slider {
+    width: 42px;
+    height: 22px;
+    background-color: #cbd5e0;
+    border-radius: 20px;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+    .slider::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: white;
+        top: 3px;
+        left: 3px;
+        transition: transform 0.2s;
+    }
+
+.switch-control input:checked + .slider {
+    background-color: var(--verde-oscuro, #1B3022);
+}
+
+    .switch-control input:checked + .slider::before {
+        transform: translateX(20px);
+    }
+
+.switch-label {
+    font-size: 0.9rem;
+    color: var(--texto, #2D2D2D);
+}
+
+/* Zona de Carga de Archivos */
+.upload-zone {
+    border: 2px dashed var(--marron-claro, #B68D40);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    background-color: #faf7f2;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+    .upload-zone:hover {
+        background-color: #f2ece1;
+    }
+
+.upload-icon {
+    font-size: 2.5rem;
+    color: var(--marron-claro, #B68D40);
+    margin-bottom: 10px;
+}
+
+.upload-zone p span {
+    color: var(--verde-oscuro, #1B3022);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.file-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Grilla de Previsualizaciones */
+.previews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.preview-card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 140px;
+    border: 2px solid var(--color-border, #e5e0d8);
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .preview-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Estado visual cuando la tarjeta tiene orden 1 (Portada) */
+    .preview-card.es-portada {
+        border-color: var(--verde-oscuro, #1B3022);
+        box-shadow: 0 0 0 1px var(--verde-oscuro, #1B3022);
+    }
+
+    .preview-card .badge-portada {
+        display: none;
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        background: var(--verde-oscuro, #1B3022);
+        color: #fff;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        z-index: 2;
+    }
+
+    .preview-card.es-portada .badge-portada {
+        display: block;
+    }
+
+/* Control numérico de orden en cada foto */
+.preview-orden-box {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    z-index: 2;
+}
+
+    .preview-orden-box label {
+        font-weight: 600;
+        font-size: 0.75rem;
+    }
+
+    .preview-orden-box input {
+        width: 38px;
+        height: 22px;
+        padding: 0 2px;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        color: #000;
+        background: #fff;
+    }
+
+.preview-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(220, 53, 69, 0.85);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.75rem;
+    z-index: 2;
+    transition: background 0.2s;
+}
+
+.preview-remove-btn:hover{
+    background: rgba(220, 53, 69, 1);
+}
+
+/* Botones Inferiores */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .col-span-2, .col-span-3 {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 1180px) {
+    .tabs-menu {
+        display: grid;
+    }
+}
+
+/* Botón de eliminar */
+.preview-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(220, 53, 69, 0.85);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.75rem;
+    z-index: 2;
+}
+/* Botones y Badges */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #2b6cb0;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #c53030;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: var(--verde-oscuro, #1B3022);
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-success:hover {
+        background-color: var(--color-primary-hover, #1f3a2f);
+        color: #fff;
+    }

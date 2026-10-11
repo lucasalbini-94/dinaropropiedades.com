@@ -5,103 +5,56 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using Servicios;
+using Servicios.Interfaces;
+using Servicios.Repositorios;
 
 namespace Negocio
 {
     public class TipoPropiedadNegocio
     {
-        public List<TipoPropiedad> listar()
+
+        private readonly ITipoPropiedadRepository _repo;
+
+        public TipoPropiedadNegocio()
         {
-            List<TipoPropiedad> lista = new List<TipoPropiedad>();
-            AccesoDB datos = new AccesoDB();
-
-            try
-            {
-                datos.setearConsulta("Select Id, Descripcion From [Tipo.Propiedad]");
-                datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    TipoPropiedad aux = new TipoPropiedad();
-
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-
-                    lista.Add(aux);
-                }
-
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+            _repo = new TipoPropiedadRepository();
         }
 
-        public void insertar(TipoPropiedad nuevo)
+        public TipoPropiedadNegocio(ITipoPropiedadRepository repo)
         {
-            AccesoDB datos = new AccesoDB();
-
-            try
-            {
-                datos.setearConsulta("Insert Into [Tipo.Propiedad] Values (@Descripcion)");
-                datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.ejecutarAccion();
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+            _repo = repo;
         }
 
-        public void modificar(TipoPropiedad modificado)
+        public List<TipoPropiedad> ListarTodas()
         {
-            AccesoDB datos = new AccesoDB();
-
-            try
-            {
-                datos.setearConsulta("Update [Tipo.Propiedad] Set Descripcion = @Descripcion Where Id = @Id");
-                datos.setearParametro("@Descripcion", modificado.Descripcion);
-                datos.setearParametro("@Id", modificado.Id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+            return _repo.ObtenerTodos();
         }
 
-        public void eliminar(int id)
+        public TipoPropiedad ObtenerPorId(int id)
         {
-            AccesoDB datos = new AccesoDB();
+            return _repo.ObtenerPorId(id);
+        }
 
-            try
-            {
-                datos.setearConsulta("Delete [Tipo.Propiedad] Where Id = @Id");
-                datos.setearParametro("@Id", id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+        public bool Guardar(TipoPropiedad tipo)
+        {
+            if (string.IsNullOrWhiteSpace(tipo.Descripcion))
+                throw new Exception("La descripción del tipo de propiedad no puede estar vacía.");
+
+            if (tipo.Id > 0)
+                return _repo.Modificar(tipo);
+            else
+                return _repo.Agregar(tipo) > 0;
+        }
+
+        public bool Modificar(TipoPropiedad tipo)
+        {
+            return _repo.Modificar(tipo);
+        }
+
+        public bool Eliminar(int id)
+        {
+            if (id <= 0) throw new ArgumentException("ID no válido.");
+            return _repo.Eliminar(id);
         }
     }
 }

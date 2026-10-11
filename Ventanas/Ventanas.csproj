@@ -79,46 +79,68 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AyudaContacto.aspx" />
+    <Content Include="Admin\ABMPropiedad.aspx" />
+    <Content Include="Admin\Default.aspx" />
+    <Content Include="Admin\GestionCatalogo.aspx" />
+    <Content Include="Admin\Inmuebles.aspx" />
+    <Content Include="Admin\Login.aspx" />
+    <Content Include="css\login-admin.css" />
+    <Content Include="css\style-admin.css" />
+    <Content Include="css\style-agregar-inmueble.css" />
+    <Content Include="css\style-catalogo.css" />
+    <Content Include="css\style-lista-inmueble.css" />
     <Content Include="css\styles.css" />
-    <Content Include="DefaultAdmin.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Descripcion.aspx" />
-    <Content Include="Desplegables.aspx" />
-    <Content Include="ErrorAdmin.aspx" />
-    <Content Include="ErrorUser.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="js\script-admin.js" />
+    <Content Include="js\script-agregar-inmueble.js" />
     <Content Include="js\scripts.js" />
-    <Content Include="Lista.aspx" />
-    <Content Include="Login.aspx" />
-    <Content Include="NuestrasPropiedades.aspx" />
-    <Content Include="PropiedadAdmin.aspx" />
-    <Content Include="QR.aspx" />
-    <Content Include="SobreNosotros.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.Master.cs">
+    <Compile Include="Admin\ABMPropiedad.aspx.cs">
+      <DependentUpon>ABMPropiedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ABMPropiedad.aspx.designer.cs">
+      <DependentUpon>ABMPropiedad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin.Master.designer.cs">
+    <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="AyudaContacto.aspx.cs">
-      <DependentUpon>AyudaContacto.aspx</DependentUpon>
+    <Compile Include="Admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AyudaContacto.aspx.designer.cs">
-      <DependentUpon>AyudaContacto.aspx</DependentUpon>
+    <Compile Include="Admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DefaultAdmin.aspx.cs">
-      <DependentUpon>DefaultAdmin.aspx</DependentUpon>
+    <Compile Include="Admin\GestionCatalogo.aspx.cs">
+      <DependentUpon>GestionCatalogo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DefaultAdmin.aspx.designer.cs">
-      <DependentUpon>DefaultAdmin.aspx</DependentUpon>
+    <Compile Include="Admin\GestionCatalogo.aspx.designer.cs">
+      <DependentUpon>GestionCatalogo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Inmuebles.aspx.cs">
+      <DependentUpon>Inmuebles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Inmuebles.aspx.designer.cs">
+      <DependentUpon>Inmuebles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Modelos\ItemCatalogoViewModel.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -126,78 +148,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Descripcion.aspx.cs">
-      <DependentUpon>Descripcion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Descripcion.aspx.designer.cs">
-      <DependentUpon>Descripcion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Desplegables.aspx.cs">
-      <DependentUpon>Desplegables.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Desplegables.aspx.designer.cs">
-      <DependentUpon>Desplegables.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ErrorAdmin.aspx.cs">
-      <DependentUpon>ErrorAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ErrorAdmin.aspx.designer.cs">
-      <DependentUpon>ErrorAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ErrorUser.aspx.cs">
-      <DependentUpon>ErrorUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ErrorUser.aspx.designer.cs">
-      <DependentUpon>ErrorUser.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Lista.aspx.cs">
-      <DependentUpon>Lista.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Lista.aspx.designer.cs">
-      <DependentUpon>Lista.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NuestrasPropiedades.aspx.cs">
-      <DependentUpon>NuestrasPropiedades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NuestrasPropiedades.aspx.designer.cs">
-      <DependentUpon>NuestrasPropiedades.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PropiedadAdmin.aspx.cs">
-      <DependentUpon>PropiedadAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PropiedadAdmin.aspx.designer.cs">
-      <DependentUpon>PropiedadAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="QR.aspx.cs">
-      <DependentUpon>QR.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="QR.aspx.designer.cs">
-      <DependentUpon>QR.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SobreNosotros.aspx.cs">
-      <DependentUpon>SobreNosotros.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SobreNosotros.aspx.designer.cs">
-      <DependentUpon>SobreNosotros.aspx</DependentUpon>
     </Compile>
     <Compile Include="User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
@@ -210,7 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="User.Master" />
-    <Content Include="Admin.Master" />
+    <Content Include="Admin\Admin.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -234,6 +186,10 @@
     <ProjectReference Include="..\Negocio\Negocio.csproj">
       <Project>{c5ed0cb6-0515-459e-b69a-272691ca893c}</Project>
       <Name>Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicios\Servicios.csproj">
+      <Project>{baa56dbe-f829-4814-a2fa-4e0f3069ebd3}</Project>
+      <Name>Servicios</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

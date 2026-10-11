@@ -34,6 +34,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,7 +45,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDB.cs" />
+    <Compile Include="ImagenSubidaDTO.cs" />
+    <Compile Include="Interfaces\IBannerRepository.cs" />
+    <Compile Include="Interfaces\IConfiguracionRepository.cs" />
+    <Compile Include="Interfaces\IFavoritoRepository.cs" />
+    <Compile Include="Interfaces\IHistorialPrecioRepository.cs" />
+    <Compile Include="Interfaces\IImagenRepository.cs" />
+    <Compile Include="Interfaces\ILogRepository.cs" />
+    <Compile Include="Interfaces\IMaestrosRepository.cs" />
+    <Compile Include="Interfaces\IPropiedadRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRolRepository.cs" />
+    <Compile Include="Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\BannerRepository.cs" />
+    <Compile Include="Repositorios\BarrioRepository.cs" />
+    <Compile Include="Repositorios\CaracteristicaRepository.cs" />
+    <Compile Include="Repositorios\ConfiguracionRepository.cs" />
+    <Compile Include="Repositorios\EstadoPropiedadRepository.cs" />
+    <Compile Include="Repositorios\FavoritoRepository.cs" />
+    <Compile Include="Repositorios\HistorialPrecioRepository.cs" />
+    <Compile Include="Repositorios\ImagenRepository.cs" />
+    <Compile Include="Repositorios\LogRepository.cs" />
+    <Compile Include="Repositorios\PropiedadRepository.cs" />
+    <Compile Include="Repositorios\RolRepository.cs" />
+    <Compile Include="Repositorios\TipoContratoRepository.cs" />
+    <Compile Include="Repositorios\TipoPropiedadRepository.cs" />
+    <Compile Include="Repositorios\UsuarioRepository.cs" />
+    <Compile Include="ServicioImagen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{EB4F594E-1E40-4439-AD2D-B0AB4C9709C3}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

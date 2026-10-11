@@ -1,0 +1,284 @@
+﻿:root {
+    /* colores */
+    --color-white: #ffffff;
+    --color-bg: #fdfaf1;
+    --color-text: #151617;
+    --color-primary: #27473a;
+    --color-primary-hover: #1f3a2f;
+    --color-accent: #bc9866;
+    --color-accent-soft: #e6d3b3;
+    --color-border: #e5e0d8;
+}
+
+/* --- ESTILOS GENERALES (ESCRITORIO) --- */
+.barra-superior {
+    color: var(--color-primary-hover);
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* Barra de controles y selector */
+.barra-superior-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.acciones-superiores {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.controles-tabla {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--verde-oscuro);
+}
+
+.select-paginacion {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background: #fff;
+    cursor: pointer;
+}
+
+/* Botón Agregar Inmueble */
+.btn-success {
+    background-color: var(--verde-oscuro, #1B3022);
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+    .btn-success:hover {
+        background-color: var(--color-primary-hover, #1f3a2f);
+        color: #fff;
+    }
+
+/* Paginador */
+.paginacion-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-pagina {
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    color: var(--texto);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+    .btn-pagina:hover:not(:disabled) {
+        background-color: var(--color-accent-soft);
+        color: var(--color-primary);
+    }
+
+    .btn-pagina.activo {
+        background-color: var(--verde-oscuro);
+        color: #fff;
+        border-color: var(--verde-oscuro);
+        font-weight: bold;
+    }
+
+    .btn-pagina:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+.tabla-inmuebles {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+    .tabla-inmuebles th {
+        background-color: var(--verde-oscuro, #1B3022);
+        color: var(--color-white);
+        padding: 12px 15px;
+        text-align: left;
+        font-size: 0.9rem;
+    }
+
+    .tabla-inmuebles td {
+        padding: 12px 15px;
+        border-bottom: 1px solid var(--color-border);
+        font-size: 0.9rem;
+        vertical-align: middle;
+    }
+
+.thumb-inmueble {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+}
+
+/* Botones y Badges */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #2b6cb0;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #c53030;
+    color: #fff;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-disponible {
+    background-color: #c6f6d5;
+    color: #22543d;
+}
+
+.badge-vendido {
+    background-color: #fed7d7;
+    color: #742a2a;
+}
+
+/* --- VISTA RESPONSIVE (CELULARES Y TABLETS <= 850px) --- */
+@media (max-width: 850px) {
+
+    .controles-tabla,
+    .paginacion-container {
+        display: none !important;
+    }
+
+    .acciones-superiores {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .tabla-responsive,
+    .tabla-responsive thead,
+    .tabla-responsive tbody {
+        display: block;
+        width: 100%;
+        background: transparent;
+        box-shadow: none;
+    }
+
+        /* Ocultamos el encabezado tradicional de la tabla */
+        .tabla-responsive thead {
+            display: none;
+        }
+
+        /* Cada fila se convierte en una tarjeta colapsable */
+        .tabla-responsive tr.propiedad-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background: var(--color-white);
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            cursor: pointer;
+            padding: 8px 12px;
+            position: relative;
+        }
+
+        /* Foto en cabecera de la tarjeta móvil */
+        .tabla-responsive td.col-foto {
+            display: block;
+            width: 50px;
+            padding: 0;
+            border: none;
+        }
+
+        /* Título y flecha en la cabecera visible */
+        .tabla-responsive td.col-titulo {
+            display: flex;
+            flex: 1;
+            padding: 0 0 0 12px;
+            border: none;
+        }
+
+    .header-movil-wrap {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .titulo-texto {
+        font-weight: 600;
+        color: var(--verde-oscuro, #1B3022);
+        font-size: 0.95rem;
+    }
+
+    /* Las demás celdas (características) ocultas por defecto */
+    .tabla-responsive td:not(.col-foto):not(.col-titulo) {
+        display: none;
+        width: 100%;
+        padding: 8px 0;
+        border-bottom: 1px dashed var(--color-border);
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        /* Formato Clave: Valor usando data-label */
+        .tabla-responsive td:not(.col-foto):not(.col-titulo)::before {
+            content: attr(data-label) ": ";
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.85rem;
+        }
+
+    /* Cuando la fila está expandida (abierta) */
+    .tabla-responsive tr.propiedad-row.abierta {
+        background-color: #ffffff;
+    }
+
+        .tabla-responsive tr.propiedad-row.abierta .flecha-desplegable {
+            transform: rotate(180deg);
+        }
+
+        .tabla-responsive tr.propiedad-row.abierta td:not(.col-foto):not(.col-titulo) {
+            display: flex;
+            /* Se muestran las características */
+        }
+
+        .tabla-responsive tr.propiedad-row.abierta td.col-acciones {
+            border-bottom: none;
+            padding-top: 12px;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+}

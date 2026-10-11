@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.Master.cs" Inherits="Ventanas.Admin.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel de Administración - Dinaro Propiedades</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="/../css/style-admin.css" rel="stylesheet" />
+    <%--Font Awesome--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div class="brand">
+                <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Abrir menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <img class="logo" src="/../Images/ImgApp/logo.png" alt="Logo">
+                <span>ADMINISTRACIÓN</span>
+            </div>
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Elio Dinaro</span>
+            </div>
+        </header>
+
+        <div class="wrapper">
+            <aside>
+                <ul class="menu-group">
+                    <li class="menu-item"><a href="Default.aspx" class="menu-link">
+                        <div><i class="fas fa-chart-line icon"></i>Panel</div>
+                    </a></li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <div><i class="fas fa-building icon"></i>Inmuebles</div>
+                            <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="Inmuebles.aspx">Lista de inmuebles</a></li>
+                            <li><a href="ABMPropiedad.aspx">Agregar inmueble</a></li>
+                            <li><a href="Inmuebles.aspx?listar=vendidos">Vendidos</a></li>
+                            <li><a href="Inmuebles.aspx?listar=Inactivos">Inactivos</a></li>
+                            <li><a href="Inmuebles.aspx?listar=destacados">Destacados</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <div><i class="fas fa-folder-open icon"></i>Catálogos</div>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="GestionCatalogo.aspx?tipo=propiedad">Tipos de inmueble</a></li>
+                            <li><a href="GestionCatalogo.aspx?tipo=contrato">Tipos de contrato</a></li>
+                            <li><a href="GestionCatalogo.aspx?tipo=barrio">Barrios</a></li>
+                            <li><a href="GestionCatalogo.aspx?tipo=estado">Estados</a></li>
+                            <li><a href="GestionCatalogo.aspx?tipo=caracteristica">Características</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <div><i class="fas fa-users icon"></i>Usuarios</div>
+                            <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Usuarios</a></li>
+                            <li><a href="#">Agregar usuario</a></li>
+                            <li><a href="#">Roles</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <div><i class="fas fa-history icon"></i>Auditoría</div>
+                            <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Logs</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <div><i class="fas fa-cog icon"></i>Herramientas</div>
+                            <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Configuración</a></li>
+                            <li><a href="#">Generador de QR</a></li>
+                            <li><a href="#">Vista de usuario</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+            <main>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+        </div>
+    </form>
+    <script src="../js/script-admin.js"></script>
+</body>
+</html>
